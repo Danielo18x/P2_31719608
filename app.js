@@ -6,7 +6,7 @@ const app = express()
 
 const puerto = 3000
 
-app.get('/', (req, res) => { //
+app.get('/', (req, res) => { 
     console.log("Recibiendo peticion")
 
     res.send('Hola ptos :D 2')
