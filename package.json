@@ -1,0 +1,26 @@
+{
+  "name": "kasiproye",
+  "version": "1.0.0",
+  "description": "proyecto web para aprender y pasar programacion :D",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Danielo18x/Kasi_repo.git"
+  },
+  "keywords": [
+    "psicopata",
+    "suicida"
+  ],
+  "author": "Danilo Marin :D (Help me)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Danielo18x/Kasi_repo/issues"
+  },
+  "homepage": "https://github.com/Danielo18x/Kasi_repo#readme",
+  "devDependencies": {
+    "nodemon": "3.1.9"
+  }
+}
