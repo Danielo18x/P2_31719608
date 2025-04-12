@@ -4,7 +4,9 @@
   "description": "proyecto web para aprender y pasar programacion :D",
   "main": "app.js",
   "scripts": {
-    "test": "nodemon app.js"
+    "dev": "ts-node-dev app.ts",
+    "build": "tsc",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +23,14 @@
   },
   "homepage": "https://github.com/Danielo18x/Kasi_repo#readme",
   "devDependencies": {
-    "express": "^5.1.0",
-    "nodemon": "3.1.9"
+    "@types/console-clear": "1.1.4",
+    "@types/express": "5.0.1",
+    "console-clear": "1.1.1",
+    "express": "5.1.0",
+    "ts-node-dev": "2.0.0",
+    "typescript": "5.8.3"
+  },
+  "dependencies": {
+    "ejs": "3.1.10"
   }
 }
