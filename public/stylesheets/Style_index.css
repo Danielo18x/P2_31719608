@@ -1,0 +1,39 @@
+h1 {
+    color: rgb(182, 32, 182);
+    font-family: AbsolutePink;
+    font-weight: bolder;
+    text-align: center;
+    text-shadow: none;
+    font-size: 90px;
+    padding: 0px;
+    margin: 10px;
+
+}
+P {
+    color: rgb(201, 47, 119);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+h2, h3, h4 {
+    font-family: DynaPuff;
+    color:rgb(94, 17, 182)
+}
+
+body {
+    background-color: rgb(248, 235, 237);
+}
+
+a {
+    color:rgb(182, 32, 182);
+    text-decoration: none;
+}
+
+img{
+    height: 500px;
+}
+
+li{
+    color: rgb(201, 47, 119);
+}
