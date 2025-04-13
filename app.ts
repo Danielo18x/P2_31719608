@@ -13,7 +13,7 @@ app.set('views', __dirname + '/views') //igual, permite utilizar ejs
 
 app.use('/', indexRouter); //Ruta principal :D
 
-app.use(express.static (__dirname + "/public"));  //Hace algo
+app.use(express.static (__dirname + "/public"));  //Hace algo (miderguer)
 
 app.use((_req, res, _next) => {
     res.status(404)//Cuando el user busca una ruta que no existe lo redirijira aqui
