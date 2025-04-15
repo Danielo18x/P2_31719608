@@ -6,7 +6,9 @@ const app = express();
 const puerto = 3000;
 clear(true);
 
-import indexRouter from "./routes/index" //importo index del proyecto
+import indexRouter from "./routes/index"
+
+ //importo index del proyecto
 
 app.set('view engine', 'ejs');  //invocacion de motor de plantillas
 app.set('views', __dirname + '/views') //igual, permite utilizar ejs

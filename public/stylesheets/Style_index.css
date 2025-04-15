@@ -1,39 +1,134 @@
-h1 {
-    color: rgb(182, 32, 182);
+body{
+    background-image: url(../images/fondo5.webp);
+    background-size: cover;
+}
+
+.cuadro{
+    width: 390px;
+    height: 580px;
+    background: linear-gradient(rgba(218, 90, 216), #f3b5f2);
+    box-sizing: boder-box;
+    margin: auto;
+    padding: 30px;
+    border-radius: 50px;
+    box-shadow: 0 0 15px 0px #4b4b4b;
+}
+
+.img_user{
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    padding: 100px;
+    margin: auto;
+    box-sizing: border-box;
+    background-image: url(../images/user.png);
+    background-size: contain;
+    border-color: black;
+    border: 10px;
+}
+
+h1{
     font-family: AbsolutePink;
-    font-weight: bolder;
+    font-size: 100pt;
     text-align: center;
-    text-shadow: none;
-    font-size: 90px;
-    padding: 0px;
-    margin: 10px;
-
-}
-P {
-    color: rgb(201, 47, 119);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    line-height: 1.5;
-    text-align: justify;
+    color: #400939;
+    margin: 15px 15px 10px 10px;
+    box-sizing: boder-box;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px #4b4b4b;
 }
 
-h2, h3, h4 {
-    font-family: DynaPuff;
-    color:rgb(94, 17, 182)
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20pt;
+    text-align: center;
+    color: #893088;
+    
+}
+form{
+    width: 325px;
+    height: 170px;
+    margin: auto;
+    padding: 10px;
+    
 }
 
-body {
-    background-color: rgb(248, 235, 237);
+.campo{
+    width: 300px;
+    height: 0.5cm;
+    padding: 0.3cm;
+    margin: 0.1cm;
+    border-color: transparent;
+    border-bottom-color: #c68cc5;
+    background: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
 }
 
-a {
-    color:rgb(182, 32, 182);
+.campo2{
+    width: 100%;
+    height: 1.3cm;
+    padding: 0.1cm;
+    margin: 0.1cm;
+    background-color:  #893088 ;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15pt;
+    font-weight: 700;
+    border-color: transparent;
+    color: #400939;
+    
+    
+}
+
+.olvido{
+    width: 325px;
+    height: 10px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
+    margin: auto;
+    margin-bottom: 5px;
+}
+
+a{
     text-decoration: none;
 }
 
-img{
-    height: 500px;
+.divisor{
+    width: 400px;
+    height: 2px;
+    margin: auto;
+    background-color: #c68cc5;
+    margin-bottom: 15px;
 }
 
-li{
-    color: rgb(201, 47, 119);
+
+.Crear-cuenta{
+    width: 200px;
+    height: 50px;
+    margin: auto;
+    padding: 0.1cm;
+    background-color: #974c95 ;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15pt;
+    font-weight: 700;
+    border-color: transparent;
+    color: #400939;
+}
+
+.crear{
+    width: 200px;
+    height: 50px;
+    margin: auto;
+}
+@font-face {
+    font-family: "DynaPuff";
+    src: url("fonts/static/DynaPuff-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "AbsolutePink";
+    src: url("fonts/AbsolutePink/Absolute\ Pink\ -\ Personal\ Use.otf") format("opentype");
 }

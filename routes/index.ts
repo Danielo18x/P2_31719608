@@ -5,7 +5,7 @@ const router= express.Router();
 router.get('/', (req, res) => { 
     res.render('index', {
         title: 'Kasitips',
-        texto: 'HOLA MUNDO :D',
+        texto: 'Hola Mundo :D',
         nombre: 'Danilo Antonio',
         apellido: 'Marin Lombano',
         cedula: '31.719.608',
