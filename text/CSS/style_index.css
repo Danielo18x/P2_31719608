@@ -1,6 +1,11 @@
 /*Estilo general*/
+*{
+    box-sizing: border-box;
+}
+
 body{
-    font-family: sans-serif;
+    min-height: 100vh;
+    font-family: sans-serif, Arial, Helvetica;
     padding: 0;
     margin: 0;
     padding-right: 0;
@@ -9,7 +14,7 @@ body{
 
 /*ENCABEZADO*/
 
-header{ /*Hay que modificar ciertas cositas*/
+header{
     display:flex;
     justify-content: space-between;
     position: fixed;
@@ -18,10 +23,10 @@ header{ /*Hay que modificar ciertas cositas*/
     height: auto;
     padding: 5px;
     z-index: 2000;
-    background-color: #09446d ; /*Agregarle opacidad*/
-    box-shadow:  0 0px 20px 0 #4b4b4b;
-    box-sizing: border-box;
+    background-color: rgba(9, 68, 109, 0.95); /* Color base con 80% de opacidad */
+    box-shadow:  0 0px 40px 0 #2a2a2a;
 }
+
 
 /*LOGOTIPO*/
 .logotipo {
@@ -32,17 +37,18 @@ header{ /*Hay que modificar ciertas cositas*/
     align-items: center;
 }
 
-.logo {
+.logotipo img {
     width: 60px;
     height: 60px;
     margin-right: 10px;
 }
 
 /*Nombre*/
-.nombre {
+.logotipo a {
     font-size: 20pt;
     font-weight: bold;
     color: #f8f9fa;
+    text-decoration: none;
 }
 
 /*BARRA DE NAVEGACION*/
@@ -59,7 +65,6 @@ header{ /*Hay que modificar ciertas cositas*/
     top: 0;
     left:0;
     z-index: 1000;
-    box-sizing: border-box;  
 }
 
 .links{
@@ -69,10 +74,9 @@ header{ /*Hay que modificar ciertas cositas*/
     padding: 3px;
     margin: 5px;
     margin-right: 20px;
-    box-sizing: border-box;
 }
 
-a {
+.links a{
     text-decoration: none;
     color:white;
 }
@@ -85,28 +89,26 @@ li {
 
 /*SECCION1*/
 
-.seccion-inicio{
+.seccion1-home{
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
     height: 100vh;
-    box-sizing: border-box;
     position: relative;
     padding: 0;
     margin: 0;
 }
 
-.image-inicio{
+.imagen1{
     width: 70%;
     height: 100%;
     background-image: url(../Pictures/fondo2.1.jpg);
     background-size: cover;
 }
 
-
-.cuadro{ /*Corregir ciertas cosas en la seccion de inicio*/
+.cuadrotext1{ 
     display: block;
     bottom: 0;
     width: 30%;
@@ -116,23 +118,22 @@ li {
     /*position: relative;*/
     right:0; 
     padding: 1vw;
-    box-sizing: border-box;
     margin-top: 9vh;
 }
 
-h1{
+.cuadrotext1 h1{
     font-size: 35pt;
     margin-top: 35%;
     color:#09446d;
 }
 
-.text-inicio{
+.cuadrotext1 p{
     font-size: 20pt;
     text-align: justify;
 
 }
 
-.butt-contacto{
+.cuadrotext1 button{
     border: 2px solid #09446d ;
     width: 11vw;
     height: 6vh;
@@ -141,17 +142,17 @@ h1{
     margin: auto;
     background-color: #09446d ;
     color: white;
+    margin-top: 25px
 }
 
-.butt-contacto:hover{
+.cuadrotext1 button:hover{
     background-color: transparent;
     color: #09446d ;
 }
 
 /*SECCION2*/
 
-
-.seccion-acerca{
+.seccion2-acercade{
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -164,85 +165,84 @@ h1{
     padding: 40px;
     margin: 0;
     grid-column-gap: 25px;
-    box-sizing: border-box;
+
 }
 
-.texto{
+.cuadrotext2{
     color: black;    
 }
 
-.texto h2{
+.cuadrotext2 h2{
     font-weight: 800;
     font-size: 30pt;
     color: #09446d;
 }
 
-.texto p{
+.cuadrotext2 p{
     font-size: 15pt;
     line-height: 1.5;
     margin-bottom: 10px;
 
 }
 
-.image-acerca .img_s2{
+.imgen2 img{
     width: 100%;
     height: auto;
-    box-shadow: 0 0 10px 0 #4b4b4b;
+    box-shadow:  0 0px 20px 0 #2a2a2a;
 }
 
 
 /*SECCION3*/
 
-.seccion-beneficios{
+.seccion3-beneficios{
     display: flex;
     width: 100%;
     height: 80vh;
     margin: 0;
 }
 
-.img_seccion3{
+.imagen3{
     width: 60%;
     height: 80vh;
     background-image: url(../Pictures/fondos3.avif);
     background-size: cover;
 }
 
-.conten_sec3{
+.cuadrotext3{
     display: block;
     width: 50%;
     height: 80vh;
     background-color: #09446d;
 }
 
-.text_sec3{
+.cuadrotext3 div{
     width: auto;
     height: auto;
     padding: 20px;
-    box-sizing: border-box;
     margin-top: 2vh;
 }
 
-.text_sec3{
+.cuadrotext3 div{
     display: block;
     font-size: 18pt;
     line-height: 1.5;
     color: #e0e9f0;
 }
 
-.Bene{
-    line-height: 2.5;
-    text-align: justify;
-}
-
-.title_sec3{
+.cuadrotext3 h2{
     text-align: center;
     font-weight: 800;
+}
+
+.cuadrotext3 div ol{
+    line-height: 2.5;
+    text-align: justify;
 }
 
 
 /*SECCION 4*/
 
-.seccion-servicios{
+.seccion4-servicios{
     display: grid;
     grid-template-areas:
         ". titulo ."
@@ -252,7 +252,6 @@ h1{
     width: 100%;
     height: 100vh;
     background-image: url(../Pictures/fondo4..jpg);
-    box-sizing: border-box;
     text-align: justify;
     justify-items: center;
     align-items: center;
@@ -260,23 +259,32 @@ h1{
     margin: 0;
 }
 
+.seccion4-servicios h2{
+    text-align: center;
+    grid-area: titulo;
+    text-align: center;
+    font-size: 30pt;
+    font-weight: 800;
+    text-decoration: underline;
+    color:#09446d;
+}
 
-.image_s4{
+.tarjetas {
+    width: 350px;
+    height: 470px;
+    background-color: #09446d;
+    border-radius: 20px;
+}
+
+.tarjetas img{
     width: 100%;
-    height: auto;
+    height: 50%;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
 
-article{
-    width: 350px;
-    height: 470px;
-    background-color: #09446d;
-    box-sizing: border-box;
-    border-radius: 20px;
-}
 
-h3{
+.tarjetas h3{
     text-align: center;
     color: #e0e9f0
 }
@@ -293,62 +301,37 @@ h3{
     grid-area: bloque3;
 }
 
-.title_sec4{
-    text-align: center;
-    grid-area: titulo;
-    text-align: center;
-    font-size: 30pt;
-    font-weight: 800;
-    text-decoration: underline;
-    color:#09446d;
-}
-
-.text_s4{
+.tarjetas p{
     padding: 15px;
     text-align: center;
     font-size: 12.5pt;
     color: #e0e9f0;
-
 }
-
-
-
-
 
 
 
 /*SECCION 5*/
 
-.seccion-testimonios{
+.seccion5-testimonios{
     display: flex;
     width: 100%;
     height: 80vh;
 }
 
-.img_seccion5{
-    width: 60%;
-    height: 80vh;
-    background-image: url(../Pictures/fondos5.jpeg);
-    background-size: cover;
-    margin: 0;
-}
-
-.conten_sec5{
+.cuadrotext5{
     display: block;
     width: 50%;
     height: 80vh;
     background-color: #09446d;
 }
 
-.text_sec5{
+.cuadrotext5 div{
     width: auto;
     height: auto;
     padding: 20px;
-    box-sizing: border-box;
-
 }
 
-.text_sec5{
+.cuadrotext5 div{
     display: block;
     font-size: 18pt;
     line-height: 1.5;
@@ -356,7 +339,16 @@ h3{
 }
 
 
-.title_sec5{
+.imagen5{
+    width: 60%;
+    height: 80vh;
+    background-image: url(../Pictures/fondos5.jpeg);
+    background-size: cover;
+    margin: 0;
+}
+
+
+.cuadrotext5 div h2{
     text-align: center;
     font-weight: 800;
 }
@@ -366,7 +358,6 @@ h3{
     text-align: center;
     text-decoration: underline;
 }
-
 
 .estrellas{
     text-align: center;
@@ -378,11 +369,11 @@ h3{
 
 /*SECCION 6*/
 
-.seccion-contacto{
+.seccion6-contacto{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     width: 100%;
     height: 100vh;
     background-color: #e1f2ff;
@@ -395,16 +386,11 @@ h3{
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
-    align-items: start;
+    align-items: center;
 }
 
-.Infor{
-    width: 500px;
-    height: 500px;
-    background-color: aquamarine;
-}
 
-.Formu{
+.Formulario{
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -420,31 +406,29 @@ form{
 }
 
 
-.campo, #mensaje {
+.campo, .mensaje {
     width: 100%;
     border: 1px solid black;
     border-radius:5px;
-    box-sizing: border-box;
 }
 
-.campo, #mensaje, #summit {
+.campo, .mensaje, .summit {
     outline: none;
     height: 1.2;
-    font-family:  sans-serif;
+    font-family: sans-serif, Arial, Helvetica;
     font-size: 12pt;
     padding: 0.4cm;
     margin: 0.2cm 0;
-    font-family: sans-serif;
     font-size: 12pt;
-    box-sizing: border-box;
 }
 
-.campo:focus, #mensaje:focus{
+
+.campo:focus, .mensaje:focus{
     border: 2px solid #09446d;
     box-shadow: 0 0 5px  #09446d;
 }
 
-.title-s6{
+.seccion6-contacto h2{
     text-align: center;
     font-size: 25pt;
     margin-top: 50px;
@@ -453,33 +437,76 @@ form{
     color:#09446d;
 }
 
-
-
-#mensaje{
+.mensaje{
     resize: none;
-    height: 3cm;
+    height: 4cm;
 }
 
-#summit{
+.summit{
     width: 3cm;
     height: 1.2cm;
     border: 1px solid #09446d;
     text-align: center;
     margin: auto;
-    box-sizing: border-box;
     background-color: #09446d;
     color:#e1f2ff;
     border-radius:5px;
     margin-top: 10px;
-
 }
 
-.direccion{
-    width: 50%;
-    height: 20px;
-    background-color: #f7c02d;
+.summit:focus{
+    border: 1px solid  #145987;
+    background-color: #145987;
 }
 
+.Informacion {
+    padding: 20px;
+    text-align: center;
+    width: 400px;
+    font-size: 13pt;
+    color:#09446d;
+}
+
+
+.direccion {
+    font-size: 12pt;
+}
+
+.correo, .telefono, .horario {
+    font-size: 12pt;
+    text-decoration: none;
+    color:#09446d;
+    line-height: 3.0;
+}
+
+.correo:hover, .telefono:hover{
+    text-decoration: underline;
+}
+
+
+
+/*PIE DE PAGINA*/
+
+footer{
+    bottom: 0;
+    padding: 20px;
+    font-size: 16pt;
+    text-align: center;
+    background-color: #001F3F;    ;
+    color: #e1f2ff;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.social-iconos a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-iconos img {
+    width: 30px; 
+    height: 30px;
+}
 
 
 
@@ -499,7 +526,6 @@ form{
     .block {
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
         overflow-x: hidden; /* Oculta el scroll horizontal */
     /*}
     header{
@@ -570,71 +596,5 @@ form{
 }*/
 
 /*TERMINO EL RESPONSIVE*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*PIE DE PAGINA*/
-footer{
-    bottom: 0;
-    padding: 20px;
-    font-size: 14px;
-    background-color: #333;
-    color: #ddd;
-    width: 100%;
-    margin: 0 auto;
-}
 
 

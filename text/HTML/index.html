@@ -11,46 +11,49 @@
     <header>
     <div class="logotipo">
         <img class="logo" src="../Pictures/iconodef.ico" alt="logo">
-        <span class="nombre"> REPARATECH </span>
+        <a class="titulo-nav" href="#home"> REPARATECH </a>
     </div>
-    <nav class="barra-navegacion">
+    </div>
+        <nav class="barra-navegacion">
             <ul class="links">
-                <li> <a href="home"> HOME </a> </li>
-                <li> <a href="acerca"> ACERCA DE </a> </li>
-                <li> <a href="servicios"> SERVICIOS </a> </li>
-                <li> <a href="testimonios"> TESTIMONIOS </a> </li>
-                <li> <a href="contacto"> CONTACTO </a> </li>
+                <li> <a href="#home"> HOME </a> </li>
+                <li> <a href="#acercade"> ACERCA DE </a> </li>
+                <li> <a href="#servicios"> SERVICIOS </a> </li>
+                <li> <a href="#testimonios"> TESTIMONIOS </a> </li>
+                <li> <a href="#contacto"> CONTACTO </a> </li>
             </ul>
         </nav>
     </header>
     <main>
-        <section class="seccion-inicio">
-            <div class="image-inicio">
-            </div>
-            <div class="cuadro">
+        <section class="seccion1-home" id="home">
+            <div class="imagen1"></div>
+            <div class="cuadrotext1">
                 <h1 id="home"> REPARATECH </h1>
-                <p class="text-inicio"> Soluciones rápidas y efectivas para tu computadora </p>
-                <button class="butt-contacto"> CONTACTANOS </button>
+                <p> Soluciones rápidas y efectivas para tu computadora </p>
+                <button> CONTACTANOS </button>
             </div>
         </section>
-        <section class="seccion-acerca">
-            <div class="texto">
-                <h2 class="titulos"> ACERCA DE </h2>
-                <p class="text"> En Reparatech contamos con un equipo de expertos comprometidos con el funcionamiento óptimo de tu computadora. </p> 
-                <p class="text"> Con años de experiencia en tecnología, nuestro objetivo es ofrecer soluciones eficientes para que sigas conectado sin interrupciones.</p>
-                <p class="text"> Nuestro compromiso es tu satisfacción. </p>
+        <section class="seccion2-acercade" id="acercade">
+            <div class="cuadrotext2">
+                <h2> ACERCA DE </h2>
+                <p> En Reparatech contamos con un equipo de expertos comprometidos con el funcionamiento óptimo de tu computadora. </p> 
+                <p> Con años de experiencia en tecnología, nuestro objetivo es ofrecer soluciones eficientes para que sigas conectado sin interrupciones.</p>
+                <p> Nuestro compromiso es tu satisfacción. </p>
             </div>
-            <div class="image-acerca">
-                <img class="img_s2"src="../Pictures/reparando3.jpg" alt="Empleado reparando una laptop">
+            <div class="imagen2">
+                <img src="../Pictures/reparando3.jpg" alt="Empleado reparando una laptop">
             </div>
         </section>
-        <section class="seccion-beneficios">
-            <div class="img_seccion3"></div>
-            <div class="conten_sec3">
-                <div class="text_sec3">
-                    <h2 class="title_sec3">  ¿Por qué elegirnos? </h2>
+
+
+
+        <section class="seccion3-beneficios">
+            <div class="imagen3"></div>
+            <div class="cuadrotext3">
+                <div>
+                    <h2>  ¿Por qué elegirnos? </h2>
                     <p> Sabemos que tu computadora es esencial en tu día a día, por eso ofrecemos: </p>
-                    <ol class="Bene">
+                    <ol>
                         <li>Atención rápida y personalizada.</li>
                         <li>Precios accesibles sin costos ocultos.</li>
                         <li>Garantía en todas nuestras reparaciones.</li>
@@ -60,29 +63,33 @@
                 </div>
             </div>
         </section>
-        <section class="seccion-servicios">
-            <h2 class="title_sec4"> SERVICIOS </h2>
-            <article id="bloque1">
-                <img class="image_s4" src="../Pictures/servicio1.jpg" alt="">
+
+
+
+        <section class="seccion4-servicios" id="servicios">
+            <h2> SERVICIOS </h2>
+            <aside id="bloque1" class="tarjetas">
+                <img  src="../Pictures/servicio1.jpg" alt="Chico reparando pantalla">
                 <h3> Reparación de Hardware </h3>
-                <p class="text_s4"> Reemplazo de piezas como pantallas, teclados y baterías, además de solucionar problemas en placas base y componentes, y mejorar el rendimiento con actualizaciones como discos SSD y memoria RAM.</p>
-            </article>
-            <article id="bloque2"> 
-                <img class="image_s4" src="../Pictures/servicio2.jpg" alt="">
+                <p> Reemplazo de piezas como pantallas, teclados y baterías, además de solucionar problemas en placas base y componentes, y mejorar el rendimiento con actualizaciones como discos SSD y memoria RAM.</p>
+            </aside>
+            <aside id="bloque2" class="tarjetas"> 
+                <img src="../Pictures/servicio2.jpg" alt="Chico usando pc">
                 <h3> Solución de Problemas de Software </h3>
-                <p class="text_s4"> Reemplazo de piezas como pantallas, teclados y baterías, además de solucionar problemas en placas base y componentes, y mejorar el rendimiento con actualizaciones como discos SSD y memoria RAM.</p>
-            </article>
-            <article id="bloque3"> <img class="image_s4" src="../Pictures/servicio3.jpg" alt="Chico limpiando ua pc">
+                <p> Reemplazo de piezas como pantallas, teclados y baterías, además de solucionar problemas en placas base y componentes, y mejorar el rendimiento con actualizaciones como discos SSD y memoria RAM.</p>
+            </aside>
+            <aside id="bloque3" class="tarjetas"> 
+                <img src="../Pictures/servicio3.jpg" alt="Chico limpiando ua pc">
                 <h3> Mantenimiento Preventivo </h3>
-                <p class="text_s4">  Realizamos limpieza interna y externa para evitar sobrecalentamientos y mejorar la eficiencia del equipo. Optimizamos el sistema para maximizar la velocidad y garantizar un rendimiento fluido. Configuramos soluciones de seguridad y respaldo para proteger tus datos. </p>
-            </article>
+                <p>  Realizamos limpieza interna y externa para evitar sobrecalentamientos y mejorar la eficiencia del equipo. Optimizamos el sistema para maximizar la velocidad y garantizar un rendimiento fluido. Configuramos soluciones de seguridad y respaldo para proteger tus datos. </p>
+            </aside>
         </section>
 
 
-        <section class="seccion-testimonios">
-            <div class="conten_sec5">
-                <div class="text_sec5">
-                    <h2 class="title_sec5"> TESTIMONIOS </h2>
+        <section class="seccion5-testimonios" id="testimonios">
+            <div class="cuadrotext5">
+                <div>
+                    <h2> TESTIMONIOS </h2>
                     <P> "Mi laptop tenía problemas de rendimiento, pero después del mantenimiento, funciona como nueva. ¡Increíble servicio!"</p>
                     <p class="estrellas"> &#9733 &#9733 &#9733 &#9733 &#9733</p>
                     <p class="nom_testigos"> Carlos G  </p>
@@ -91,38 +98,40 @@
                     <p class="nom_testigos">  Ana M </p>
                 </div>
             </div>
-            <div class="img_seccion5"></div>
+            <div class="imagen5"></div>
         </section>
 
 
-        <section class="seccion-contacto">
-            <h2 class="title-s6"> Contactanos </h2>
+        <section class="seccion6-contacto" id="contacto">
+            <h2> Contactanos </h2>
             <div class="contacto">
-                <div class="Formu">
+                <div class="Formulario">
                     <form>
                         <input class="campo" type="text" placeholder="Nombre">
                         <input class="campo" type="email" placeholder="Correo">
                         <input class="campo" type="text" placeholder="Teléfono">
-                        <textarea name="Mensaje" id="mensaje" placeholder="Mensaje" ></textarea>
-                        <button type="submit"id="summit"> Enviar </button>
+                        <textarea name="Mensaje" class="mensaje" placeholder="Mensaje" ></textarea>
+                        <button type="submit" class="summit"> Enviar </button>
                     </form>
                 </div>
-                <div class="Infor">
-                    <div class="direccion">
-                        
-                    </div>
+                <div class="Informacion">
+                    <p class="direccion">Av. Bolívar, esquina con Calle Comercio<br>
+                        Villa de Cura, Estado Aragua, Venezuela</p>
+                    <p> <strong> 📧 Email: </strong> <a class="correo" href="mailto:soporte@reparatech.com"> soporte@reparatech.com </a> </p>
+                    <strong> 📞 Teléfono</strong> <a class="telefono" href="tel: +58 412-530-9218"> +58 426-530-9218 </a>
+                    <p class="horario">⏰ <strong> Horario: </strong> Lunes - Viernes 8:30 - 19:00</p>
                 </div>
             </div>
-
-
-
-
-
         </section> 
     </main>
     <footer>
-        @2025 todos los derechos reservados
+        <div class="social-iconos">
+            <a href="https://www.youtube.com" target="_blank"><img src="/Pictures/youtube-icon.png" alt="YouTube"></a>
+            <a href="https://www.instagram.com" target="_blank"><img src="/Pictures/instagram-icon.png" alt="Instagram"></a>
+            <a href="https://www.whatsapp.com" target="_blank"><img src="../Pictures/whatsapp-icon.png" alt="WhatsApp"></a>
+            <a href="https://www.facebook.com" target="_blank"><img src="../Pictures/facebook-icon.png" alt="Facebook"></a>
+        </div>
+        <p>©2025 | Todos los derechos reservados </p>
     </footer>
-
 </body>
 </html>
