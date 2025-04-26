@@ -315,9 +315,7 @@ li {
     width: auto;
     height: auto;
     padding: 20px;
-}
-
-.cuadrotext5 div{
+    text-align: center;
     display: block;
     font-size: clamp(0.9rem, 1.5vw, 2rem);
     line-height: 1.5;
@@ -334,7 +332,6 @@ li {
 
 
 .cuadrotext5 div h2{
-    text-align: center;
     font-weight: 800;
 }
 
@@ -348,8 +345,6 @@ li {
     text-align: center;
     color: #f7c02d ;
 }
-
-
 
 
 /*SECCION 6: CONTACTO*/
