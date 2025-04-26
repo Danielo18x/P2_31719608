@@ -3,27 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="./images/icon.png">
+    <title> <%= title %> </title>
     <link rel="stylesheet" href="./stylesheets/Style_index.css">
-    <title> Kasitips </title>
 </head>
 <body>
-    <h1> KASITIPS </h1>
-    <div class="cuadro">
-        <div class="img_user"></div>
-        <h2> Inicio de Sesión </h2>
-        <form>
-            <input class="campo" type="email" placeholder="Correo Electrónico" title="Correo">
-            <input class="campo" type="password" placeholder="Contraseña" title="Contraseña">
-            <button class="campo2" type="submit"> Iniciar sesión </button>
-        </form>
-        <div class="olvido">
-            <a href=""> ¿Olvidaste tu Contraseña? </a> <br>
-        </div>
-        <div class="divisor"></div>
-        <div class="crear">
-            <button class="Crear-cuenta"> Crear cuenta nueva </button>
-        </div>
-    </div>
+    <h1 class="Titulo"> <%= texto %> </h1>
+    <ul>
+        <li> <%= nombre %> </li>
+        <li> <%= apellido %></li>
+        <li> <%= cedula %></li>
+        <li> <%= seccion %></li>
+    </ul>
 </body>
-</html> 
+</html>

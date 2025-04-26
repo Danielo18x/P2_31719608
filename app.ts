@@ -18,7 +18,7 @@ app.use('/', indexRouter); //Ruta principal :D
 app.use(express.static (__dirname + "/public"));  //Hace algo (miderguer)
 
 app.use((_req, res, _next) => {
-    res.status(404).send('la pta ruta no fue encontrada')//Cuando el user busca una ruta que no existe lo redirijira aqui
+    res.status(404).send('La ruta no fue encontrada')//Cuando el user busca una ruta que no existe lo redirijira aqui
 })
 
 app.listen(puerto, () =>{
