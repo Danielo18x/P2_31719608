@@ -625,10 +625,6 @@ footer a:hover{
         min-width: 100%;
         min-height: 100dvh;
     }
-
-    .cuadrotext1 button{
-        background: #2a2a2a;
-    }
 }
 
 @media (min-width: 810px) and (max-width: 1100px) and (orientation: portrait){
