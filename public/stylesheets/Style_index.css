@@ -1,0 +1,644 @@
+/*Estilo general*/
+*{
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    font-family: sans-serif, Arial, Helvetica;
+    padding: 0;
+    margin: 0;
+    padding-right: 0;
+    overflow-x: hidden;
+}
+
+/*ENCABEZADO*/
+
+header{
+    display:flex;
+    justify-content: space-between;
+    position: fixed;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    z-index: 2000;
+    background-color: rgba(9, 68, 109, 0.95); /* Color base con 80% de opacidad */
+    box-shadow:  0 0px 40px 0 #2a2a2a;
+}
+
+
+/*LOGOTIPO*/
+.logotipo {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.logotipo img {
+    width: 60px;
+    height: 60px;
+    margin-right: 0.5rem;
+}
+
+/*Nombre*/
+.logotipo a {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #f8f9fa;
+    text-decoration: none;
+}
+
+
+/*BARRA DE NAVEGACION*/
+
+.barra-navegacion {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: start;
+    flex-direction: row;
+    position: flex-end;
+    top: 0;
+    left:0;
+    z-index: 1000;
+}
+
+.links-nav{
+    display:flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0.2rem;
+    left: 0;
+}
+
+.links-nav a{
+    text-decoration: none;
+    color:white;
+}
+
+li {
+    list-style-type: none;
+}
+
+/*SECCIONES*/ 
+
+/*SECCION1: HOME*/
+
+.seccion1-home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100dvh;
+    margin: auto;
+}
+
+.imagen1{
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/imagen1.jpg);
+    background-size: cover;
+}
+
+.cuadrotext1{ 
+    width: 50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    margin-bottom: 4rem;
+}
+
+.cuadrotext1 h1{
+    font-size: clamp(2rem, calc(4vw + 1rem), 3.3rem);
+    margin-top: 30vh;
+    color:#09446d;
+    font-weight: 800;
+}
+
+.cuadrotext1 p{
+    font-size: clamp(1rem, calc(1vw + 1rem), 2rem);
+    padding: 0.2em;
+}
+
+.cuadrotext1 button{
+    border: 2px solid #09446d ;
+    text-align: center;
+    width: 11vw;
+    height: 6vh;
+    font-size: 1rem;
+    margin: auto;
+    background-color: #09446d ;
+    color: white;
+    margin-top: 1vh;
+}
+
+.cuadrotext1 button:hover{
+    background-color: transparent;
+    color: #09446d ;
+}
+
+/*SECCION2: ACERCA DE*/
+
+.seccion2-acercade{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    min-height: 80vh;
+    background-color: #e0e9f0 ;
+    padding: 40px;
+    margin: 0;
+    grid-column-gap: 50px;
+}
+
+.cuadrotext2{
+    color: black;    
+}
+
+.cuadrotext2 h2{
+    font-weight: 800;
+    font-size: 30pt;
+    color: #09446d;
+}
+
+.cuadrotext2 p{
+    font-size: clamp(0.9rem, 1.5vw, 2rem);
+    line-height: 1.5;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+
+.imagen2 img{
+    width: 100%;
+    height: auto;
+    box-shadow:  0 0px 20px 0 #2a2a2a;
+}
+
+
+/*SECCION3: ¿POR QUE NOSOTROS?*/
+
+.seccion3-beneficios{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+}
+
+
+.imagen3{
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/imagen3.avif);
+    background-size: cover;
+}
+
+.cuadrotext3{
+    width: 100%;
+    height: 100%;
+    background-color: #09446d;
+}
+
+.cuadrotext3 div{
+    width: auto;
+    height: auto;
+    padding: 20px;
+    margin-top: 2vh;
+}
+
+.cuadrotext3 div{
+    font-size: clamp(0.9rem, 1.5vw, 2rem);
+    line-height: 1.5;
+    color: #e0e9f0;
+}
+
+.cuadrotext3 h2{
+    text-align: center;
+    font-weight: 800;
+}
+
+.cuadrotext3 div ol{
+    line-height: 2.5;
+    text-align: justify;
+}
+
+
+/*SECCION 4: SERVICIOS*/
+
+.seccion4-servicios{
+    width: 100%;
+    min-height: 100dvh;
+    background-image: url(../images/imagen4.jpg);
+    overflow: hidden;
+}
+
+.servicios{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+    align-items: center;
+}   
+
+.seccion4-servicios h2{
+    text-align: center;
+    grid-area: titulo;
+    text-align: center;
+    font-size: 30pt;
+    font-weight: 800;
+    text-decoration: underline;
+    color:#09446d;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin: 5rem 0;
+}
+
+.tarjetas {
+    width: 340px;
+    height: 470px;
+    background-color: #09446d;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.tarjetas img{
+    width: 100%;
+    height: 50%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+
+.tarjetas h3{
+    text-align: center;
+    margin: 10px 0;
+    color: #e0e9f0
+}
+
+
+.tarjetas p{
+    padding: 15px;
+    text-align: center;
+    font-size: 1rem;
+    color: #e0e9f0;
+}
+
+
+
+/*SECCION 5: TESTIMONIOS*/
+
+.seccion5-testimonios{
+    scroll-margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+}
+
+.cuadrotext5{
+    width: 100%;
+    height: 100%;
+    background-color: #09446d;
+}
+
+.cuadrotext5 div{
+    width: auto;
+    height: auto;
+    padding: 20px;
+}
+
+.cuadrotext5 div{
+    display: block;
+    font-size: clamp(0.9rem, 1.5vw, 2rem);
+    line-height: 1.5;
+    color: #e0e9f0;
+}
+
+
+.imagen5{
+    width: 100%;
+    height: 100%;
+    background: url(../images/imagen5.jpg) no-repeat center center/cover;
+}
+
+
+
+.cuadrotext5 div h2{
+    text-align: center;
+    font-weight: 800;
+}
+
+.nom_testigos{
+    font-weight: 700;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.estrellas{
+    text-align: center;
+    color: #f7c02d ;
+}
+
+
+
+
+/*SECCION 6: CONTACTO*/
+
+.seccion6-contacto{
+    scroll-margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background-color: #e1f2ff;
+    align-items: center;
+}
+
+.contacto{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.seccion6-contacto p{
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.Formulario{
+    width: 100%;
+}
+
+.Formulario form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.campo, .mensaje {
+    width: 100%;
+    border: 1px solid black;
+    border-radius:5px;
+}
+
+.campo, .mensaje, .summit {
+    outline: none;
+    height: 1.2;
+    font-family: sans-serif, Arial, Helvetica;
+    font-size: 1rem;
+    padding: 0.4cm;
+    margin: 0.2cm 0;
+}
+
+
+.campo:focus, .mensaje:focus{
+    border: 2px solid #09446d;
+    box-shadow: 0 0 5px  #09446d;
+}
+
+.seccion6-contacto h2{
+    margin-top: 10vh;
+    font-weight: 700;
+    text-decoration: underline;
+    color:#09446d;
+    margin: 3.5rem 0;
+}
+
+.mensaje{
+    font-family: inherit;
+    resize: none;
+    min-height: 8.8rem;
+}
+
+.summit{
+    background-color: #09446d;
+    color:#e1f2ff;
+    border-radius:3px;
+    margin-bottom: 1.3rem;
+    font-size: 1rem;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.summit:focus{
+    border: 1px solid  #145987;
+    background-color: #145987;
+}
+
+.Informacion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+    margin-top: 0;
+    color:#09446d;
+    padding: 1rem;
+    justify-content: center;
+    text-align: center;
+    line-height: 0.2;
+}
+
+
+.links a{
+    color:#09446d;
+}
+
+
+.links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 0;
+
+}
+
+.correo, .telefono, .horario {
+    text-decoration: none;
+    color:#09446d;
+    line-height: 0.1;
+}
+
+.correo:hover, .telefono:hover{
+    text-decoration: underline;
+}
+
+/*PIE DE PAGINA*/
+
+footer{
+    bottom: 0;
+    padding: 20px;
+    font-size: 16pt;
+    text-align: center;
+    background-color: #001F3F;    ;
+    color: #e1f2ff;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.social-iconos a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-iconos img {
+    width: 30px; 
+    height: 30px;
+}
+
+footer a:hover{
+    transform: translateY(-0.6rem);
+}
+
+
+/*MEDIA QUERIES*/
+
+@media (max-width: 800px) and (orientation: portrait){
+    body{
+        min-width: 100vw;
+    }
+
+    .seccion1-home{
+        flex-direction: column-reverse;
+        align-content: center;
+    }
+
+    .imagen1{
+        width: 100%;
+    }
+
+    .cuadrotext1{
+        width: 100%;
+        text-align: center;
+    }
+
+    header{
+        width: 100%;
+    }
+
+    .barra-navegacion{
+        display: none;
+    }
+
+    .contacto{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+    }
+    .seccion5-testimonios{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+    }
+    .seccion3-beneficios{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .seccion2-acercade{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .cuadrotext1 button{
+        width: 60%;
+        height: 2.5rem;
+    }
+
+    .cuadrotext2{
+        grid-row:2;
+    }
+    .imagen2{
+        grid-row: 1;
+    }
+}
+
+
+@media (max-width: 1024px) and (orientation: landscape) {
+    body{
+        min-height: 100vh;
+    }
+
+    .seccion1-home{
+        min-width: 100%;
+        min-height: 100%;
+    }
+
+    
+    .imagen1{
+        max-width: 50%;
+    }
+
+    .cuadrotext1{
+        width: 50%;
+        min-height: auto;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .seccion2-acercade{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 50px;
+    }
+
+    header{
+        width: 100%;
+    }
+
+    
+    .seccion5-testimonios{
+        min-width: 100%;
+        min-height: 100dvh;
+    }
+
+    
+    .seccion3-beneficios{
+        min-width: 100%;
+        min-height: auto;
+    }
+
+    .seccion2-acercade{
+        min-width: 100%;
+        height: 100%;
+
+    }
+
+    .cuadrotext1 button{
+        width: 60%;
+        height: 2.5rem;
+    }
+
+    .seccion4-servicios{
+        min-width: 100%;
+        min-height: 100dvh;
+    }
+
+    .cuadrotext1 button{
+        background: #2a2a2a;
+    }
+}
+
+@media (min-width: 810px) and (max-width: 1100px) and (orientation: portrait){
+
+    .imagen1{
+        max-width: 100%;
+    }
+
+    .cuadrotext1 button{
+        width: 60%;
+        height: 2.5rem;
+    }
+}
