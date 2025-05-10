@@ -1,11 +1,12 @@
 import express from 'express';
 
+import {ContactsController} from "../controler/controler"
+
 const router= express.Router();
 
-router.get('/', (req, res) => { 
-    res.render('index', {
-        title: 'ReparaTech',
-    })
-})
+router.get('/', ContactsController.get)
+
+router.post('/contact',  ContactsController.validateData, ContactsController.add)
+router.post('/payment', ContactsController.pago)
 
 export default router;

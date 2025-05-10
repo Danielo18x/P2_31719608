@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../stylesheets/style_form_pago.css">
+        <link rel="icon" type="image/png" href="../images/iconito_form_pago.png">
+        <script src="/javascript/add_services.js"></script>
+        <title> <%= title %> </title>
+    </head>
+    <body>
+        <div class="pago">
+            <div class="imagen6"></div>
+            <div class="Form_pago">
+                <form action="/payment" method="post">
+                    <h2> Pago con tarjeta </h2>
+                    <label> Servicio
+                        <input class="campo_services" type="text" required title="Ingrese su correo" id="servicio" readonly>
+                    </label>
+                    <label> Correo electrónico
+                        <input class="campo_correo" type="email" required title="Ingrese su correo">
+                    </label>
+                    <label> Informacion de la tarjeta
+                        <input class="campo_tarjeta" type="text" required placeholder="1234 1234 1234 1234" pattern="[0-9]+" maxlength="16" minlength="16" step="1" title="Numero de tarjeta">
+                        <div class="tarjeta">
+                            <input class="campo_date" type="number" min="1" max="12" step="1" placeholder="MM" required maxlength="2" minlength="2" title="Mes de expiración">
+                            <input class="campo_date" type="text" step="1" pattern="[0-9]+" placeholder="AA" required maxlength="2" minlength="2" title="Año de expiracion">
+                            <input class="campo_date" type="text" placeholder="CVV/CVC" pattern="[0-9]+" step="1" required maxlength="3" minlength="3" title="Código de seguridad">
+                        </div>
+                    </label>
+                    
+                    <label> Nombre del Titular de la Tarjeta
+                        <input class="campo_nombre" type="text" required placeholder="Nombre Completo" title="Ingrese su Nombre Completo">
+                    </label>
+                    <label> Monto
+                        <div class="monto">
+                            <input class="campo_monto" type="number" required step="0.01" min="0">
+                            <select class="select_moneda" id="moneda" name="currency" pattern="[0-9]+">
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="VES">VES</option>
+                            </select>
+                        </div>
+                    </label>
+                    <button type="submit" class="summit"> Pagar </button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

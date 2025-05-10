@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheets/style_panel_admin.css">
+    <link rel="icon" type="image/ico" href="../images/iconito.ico">
+    <title> Reparatech Admin</title>
+</head>
+<body>
+    <h1> Panel Administrador Reparatech </h1>
+    <table class="tabla">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Mensaje</th>
+            <th>IP</th>
+            <th>Fecha</th>
+        </tr>
+        <% contacts.forEach(contact => { %>
+        <tr>
+            <td>
+                <p><%= contact.id %></p>
+            </td>
+            <td>
+                <p><%= contact.Nombre %></p>
+            </td>
+            <td>
+                <p><%= contact.Correo %></p>
+            </td>
+            <td>
+                <p><%= contact.Telefono %></p>
+            </td>
+            <td>
+                <p><%= contact.Mensaje %></p>
+            </td>
+            <td>
+                <p><%= contact.Ip %></p>
+            </td>
+            <td>
+                <p><%= contact.Fecha_Hora %></p>
+            </td>
+        </tr>
+        <% }); %>
+    </table>
+    </main>
+</body>
+</html>

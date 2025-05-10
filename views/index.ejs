@@ -7,10 +7,10 @@
     <meta name="keywords" content="Reparación de computadores, Mantenimiento de PC, Servicio técnico de computadoras, Reparación de laptops, Soluciones informáticas, Diagnóstico de hardware y software, Actualización de equipos, Recuperación de datos, Optimización de rendimiento">
     <meta name="author" content="Danilo Marin">
     <meta name="title"  content="ReparaTech">
-    <meta name="OG:TITLE" content="REPARATECH"> <!--Definir si se deja o no-->
-    <link rel="stylesheet" href="./stylesheets/Style_index.css">
-    <link rel="icon" type="image/ico" href="./images/icono.ico">
-    <title> <%= title %> </title>
+    <meta name="OG:TITLE" content="REPARATECH">
+    <link rel="stylesheet" href="./stylesheets/style_index.css">
+    <link rel="icon" type="image/ico" href="./images/iconito.ico">
+    <title> Reparatech </title>
 </head>
 <body>
     <header>
@@ -34,7 +34,7 @@
             <div class="cuadrotext1">
                 <h1 id="home"> REPARATECH </h1>
                 <p> Soluciones rápidas y efectivas para tu computadora </p>
-                <button> CONTACTANOS </button>
+                <a href="#contacto"> <button> CONTACTANOS </button> </a> 
             </div>
         </section>
         <section class="seccion2-acercade" id="acercade">
@@ -66,20 +66,21 @@
         </section>
         <section class="seccion4-servicios" id="servicios">
             <h2> SERVICIOS </h2>
+            <p class="text_3"> Seleccione el servicio que desea contratar </p>
             <div class="servicios">
                 <aside id="bloque1" class="tarjetas">
                     <img loading="lazy"  src="./images/servicio1.jpg" alt="Chico reparando pantalla">
-                    <h3> Reparación de Hardware </h3>
+                    <a href="/pago/service?servicio=Reparacion_de_Hardware&monto=50" title="Selecciona el servicio"> <h3> Reparación de Hardware </h3> </a>
                     <p> Reemplazo de piezas como pantallas, teclados y baterías, además de solucionar problemas en placas base y componentes, y mejorar el rendimiento con actualizaciones como discos SSD y memoria RAM.</p>
                 </aside>
                 <aside id="bloque2" class="tarjetas"> 
                     <img loading="lazy" src="./images/servicio2.jpg" alt="Chico usando pc">
-                    <h3> Solución de Problemas de Software </h3>
+                    <a href="/pago/service?servicio=Solución_de_Problemas_de_Software&monto=40" title="Selecciona el servicio"> <h3> Solución de Problemas de Software </h3> </a>
                     <p>  Ofrecemos soluciones de software que incluyen la eliminación de virus y malware para proteger tu equipo, la instalación y actualización de programas para mantener su estabilidad, y la recuperación de datos perdidos con herramientas avanzadas. </p>
                 </aside>
                 <aside id="bloque3" class="tarjetas"> 
                     <img loading="lazy" src="./images/servicio3.jpg" alt="Chico limpiando ua pc">
-                    <h3> Mantenimiento Preventivo </h3>
+                    <a href="/pago/service?servicio=Mantenimiento_Preventivo&monto=20" title="Selecciona el servicio"> <h3> Mantenimiento Preventivo </h3> </a>
                     <p>  Realizamos limpieza interna y externa para evitar sobrecalentamientos y mejorar la eficiencia del equipo. Optimizamos el sistema para maximizar la velocidad y garantizar un rendimiento fluido. Configuramos soluciones de seguridad y respaldo para proteger tus datos. </p>
                 </aside>
             </div>
@@ -102,18 +103,45 @@
             <h2> Contactanos </h2>
             <div class="contacto">
                 <div class="Formulario">
-                    <form>
-                        <input class="campo" type="text" placeholder="Nombre">
-                        <input class="campo" type="email" placeholder="Correo">
-                        <input class="campo" type="text" placeholder="Teléfono">
-                        <textarea name="Mensaje" class="mensaje" placeholder="Mensaje" ></textarea>
+                    <form action="/contact#contacto" method="post">
+                        <input class="campo" type="text" placeholder="Nombre" name="nombre" id="nombre" >
+                        <% if (errores) { %>
+                            <% errores.forEach(error => { %>
+                                <% if (error.path === 'nombre') { %>
+                                    <div class="cuadro_error"> <p class="error_mensaje"><%= error.msg %></p> </div>
+                                <% } %>
+                            <% }) %>
+                        <% } %>
+                        <input class="campo" type="email" placeholder="Correo" name="correo" id="correo" value="<%= datos?.correo || '' %>">
+                        <% if (errores) { %>
+                            <% errores.forEach(error => { %>
+                                <% if (error.path === 'correo') { %>
+                                    <div class="cuadro_error"> <p class="error_mensaje"><%= error.msg %></p> </div>
+                                <% } %>
+                            <% }) %>
+                        <% } %>
+                        <input class="campo" type="tel" placeholder="Teléfono" name="telefono" id="telefono" value="<%= datos?.telefono || '' %>">
+                        <% if (errores) { %>
+                            <% errores.forEach(error => { %>
+                                <% if (error.path === 'telefono') { %>
+                                    <div class="cuadro_error"> <p class="error_mensaje"><%= error.msg %></p> </div>
+                                <% } %>
+                            <% }) %>
+                        <% } %>
+                        <textarea class="mensaje" placeholder="Mensaje" name="comentario" id="comentario" value="<%= datos?.comentario || '' %>"></textarea>
+                        <% if (errores) { %>
+                            <% errores.forEach(error => { %>
+                                <% if (error.path === 'comentario') { %>
+                                    <div class="cuadro_error"> <p class="error_mensaje"><%= error.msg %></p> </div>
+                                <% } %>
+                            <% }) %>
+                        <% } %>
                         <button type="submit" class="summit"> Enviar </button>
                     </form>
                 </div>
                 <div class="Informacion">
                     <div class="direccion">
                         <p>Av. Bolívar, esquina con Calle Comercio Villa de Cura, Estado Aragua, Venezuela</p>
-                            
                     </div>
                     <div class="links">
                         <p> <strong> 📧Email: </strong> <a class="correo" href="mailto:soporte@reparatech.com"> soporte@reparatech.com </a> </p>

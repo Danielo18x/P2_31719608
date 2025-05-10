@@ -1,0 +1,163 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    font-family: sans-serif, Arial, Helvetica;
+    padding: 0;
+    margin: 0;
+    padding-right: 0;
+    overflow-x: hidden;
+    color:#09446d
+}
+
+.pago{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.imagen6{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-image: url(../images/imagen_form_pago.jpg);
+}
+
+.Form_pago{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #e1f2ff;
+}
+
+.Form_pago form{
+    width: 65%;
+    height: auto;
+    margin: auto;
+}
+
+.Form_pago form h2{
+    font-size: 20pt;
+    text-decoration: underline;
+}
+
+
+.Form_pago{
+    width: 100%;
+}
+
+.Form_pago form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.Form_pago label{
+    display: block;
+    margin: 10px 0 5px;
+    width: 100%;
+    font-weight: bold;
+}
+
+.campo_correo, .campo_services, .campo_nombre, .campo_tarjeta, .campo_date, .campo_monto{
+    border: 1px solid black;
+    border-radius:5px;
+}
+
+.campo_correo, .campo_services, .campo_nombre, .campo_tarjeta, .campo_monto{
+    width: 100%;
+}
+
+
+.campo_correo, .campo_services, .campo_nombre, .campo_tarjeta, .campo_date, .campo_monto{
+    outline: none;
+    height: 1.2;
+    font-family: sans-serif, Arial, Helvetica;
+    font-size: 0.95rem;
+    padding: 0.25cm;
+    margin: 0.2cm 0;
+}
+
+.campo_date{
+    margin-top: 0;
+    width: 33%;
+}
+
+.campo_correo:focus, .campo_services:focus, .campo_nombre:focus, .campo_tarjeta:focus, .campo_date:focus, .campo_monto:focus, .select_moneda:focus{
+    border: 2px solid #09446d;
+    box-shadow: 0 0 5px  #09446d;
+}
+
+.tarjeta{
+    display: flex;
+    justify-items: center;
+    gap: 0.1rem;
+}
+
+.monto{
+    display: flex;
+    gap: 0.1rem;
+}
+
+.campo_monto{
+    width: 85%;
+}
+
+.select_moneda{
+    outline: none;
+    height: 1.2;
+    font-family: sans-serif, Arial, Helvetica;
+    font-size: 1rem;
+    padding: 0.2cm;
+    margin: 0.2cm 0;
+    border: 1px solid black;
+    border-radius:5px;
+}
+
+.summit{
+    width: 80%;
+    background-color: #09446d;
+    color:#e1f2ff;
+    border-radius:3px;
+    margin-bottom: 1.3rem;
+    font-size: 1rem;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.summit:focus{
+    border: 1px solid  #145987;
+    background-color: #145987;
+}
+
+
+@media (max-width: 800px) and (orientation: portrait){
+    .pago{
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+    }
+
+    .imagen6{
+        height: 50vh;
+    }
+}
+
+@media (min-width: 810px) and (max-width: 1100px) and (orientation: portrait){
+    .pago{
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+    }
+
+    .imagen6{
+        height: 50vh;
+    }
+}

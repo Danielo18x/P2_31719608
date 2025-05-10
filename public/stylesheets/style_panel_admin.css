@@ -1,0 +1,43 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    font-family: sans-serif, Arial, Helvetica;
+    padding: 0;
+    margin: 0;
+    padding-right: 0;
+    color:#09446d;
+    background-size: cover;
+    overflow-x: hidden;
+    background-color: #e1f2ff;
+}
+
+h1{
+    text-align: center;
+    padding: 40px;
+    text-decoration: underline;
+}
+
+.tabla{
+    border: 0.2rem solid #09446d;
+    border-collapse: collapse;
+    text-align: center;
+    font-weight: 700;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+td, th{
+    border: 0.2rem solid #09446d;
+}
+
+th{
+    padding: 8px;
+}
+
+td{
+    padding-left: 10px;
+    padding-right: 10px;
+}

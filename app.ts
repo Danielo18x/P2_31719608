@@ -1,21 +1,30 @@
-//:D helpe me 
-
 import express from 'express';
 import clear from 'console-clear';
+import bodyParser from 'body-parser';
 const app = express(); 
 const puerto = 3000;
 clear(true);
 
 import indexRouter from "./routes/index"
+import formPagoRouter from "./routes/form_pago"
+import adminContactRouter from "./routes/admin_contact"
 
  //importo index del proyecto
+app.disable('x-powered-by')
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded())
+
+app.use(express.static (__dirname + "/public")); 
 
 app.set('view engine', 'ejs');  //invocacion de motor de plantillas
-app.set('views', __dirname + '/views') //igual, permite utilizar ejs
+app.set('views', __dirname + '/views')
+
+
 
 app.use('/', indexRouter); //Ruta principal :D
-
-app.use(express.static (__dirname + "/public"));  //Hace algo (miderguer)
+app.use('/pago', formPagoRouter);
+app.use('/admin', adminContactRouter);
 
 app.use((_req, res, _next) => {
     res.status(404).send('La ruta no fue encontrada')//Cuando el user busca una ruta que no existe lo redirijira aqui
@@ -24,5 +33,4 @@ app.use((_req, res, _next) => {
 app.listen(puerto, () =>{
     console.log(`server: http://localhost:${puerto}`)
 })
-
 
