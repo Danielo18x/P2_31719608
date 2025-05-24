@@ -441,6 +441,19 @@ li {
     min-height: 8.8rem;
 }
 
+.recaptcha{
+    display: block;
+    margin: 10px 0 5px;
+    width: 100%;
+    font-weight: bold;
+    color:#09446d;
+}
+
+.g-recaptcha{
+    padding: 1rem 1rem 0 0;
+}
+
+
 .summit{
     background-color: #09446d;
     color:#e1f2ff;

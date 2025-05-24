@@ -32,6 +32,8 @@ export class ContactsController{
 
             const {nombre, correo, telefono, comentario} = req.body
             const ip = (req.ip || "desconocida").replace('::ffff:', '');
+            console.log(ip)
+
             const fecha = new Date().toISOString().replace('T', ' ').substring(0, 19);
             const guardarDatos = {nombre, correo, telefono, comentario, ip, fecha}
 
@@ -54,7 +56,7 @@ export class ContactsController{
             console.error('Error al guardar el contacto:', error);
         }
     }
-
+    //Pal recachat 6LcMPEcrAAAAAJuCxaFSoLMbnbkpWQb_J0a0mzAk esta es la clave segura
     static async pago(req: Request, res: Response){
         res.render('mensaje_pago')
     }

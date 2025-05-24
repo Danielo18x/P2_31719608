@@ -5,6 +5,7 @@ const app = express();
 const puerto = 3000;
 clear(true);
 
+
 import indexRouter from "./routes/index"
 import formPagoRouter from "./routes/form_pago"
 import adminContactRouter from "./routes/admin_contact"
@@ -19,8 +20,7 @@ app.use(express.static (__dirname + "/public"));
 
 app.set('view engine', 'ejs');  //invocacion de motor de plantillas
 app.set('views', __dirname + '/views')
-
-
+app.set('trust proxy', true);
 
 app.use('/', indexRouter); //Ruta principal :D
 app.use('/pago', formPagoRouter);
