@@ -53,7 +53,7 @@ export class ContactsController{
             //para localizar el pais de la ip
             let pais= '';
             try{
-                const resUb= await fetch(`https://ipapi.co/${ip}/json/`);
+                const resUb= await fetch(`https://ipapi.com/${ip}/json/`);
                 const datosUb= await resUb.json() as {pais_name?: string};
                 pais= datosUb.pais_name || '';
             } catch (e){
