@@ -56,12 +56,11 @@ export class ContactsController{
             //para localizar el pais de la ip
             let pais= '';
             try{
-                const resUb= await fetch(`https://ipapi.com/${ip}/json/`);
-                const datosUb= await resUb.json() as {pais_name?: string};
-                pais= datosUb.pais_name || '';
+                const resUb= await fetch(`https://ipapi.co/${ip}/json/`);
+                const datosUb= await resUb.json() as {country_name?: string};
+                pais= datosUb.country_name || '';
             } catch (e){
                 pais= '';
-                console.log("pais nulo")
             }
             const fecha = new Date().toISOString().replace('T', ' ').substring(0, 19);
             const guardarDatos = {nombre, correo, telefono, comentario, ip, fecha, pais}
