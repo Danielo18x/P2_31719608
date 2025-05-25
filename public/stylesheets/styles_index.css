@@ -453,6 +453,9 @@ li {
     padding: 1rem 1rem 0 0;
 }
 
+.cuadro_error{
+    font-weight: 500 ;
+}
 
 .summit{
     background-color: #09446d;

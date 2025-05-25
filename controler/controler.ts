@@ -1,9 +1,12 @@
 import { Request, Response } from "express";
 import { ContactsModel } from "../model/model";
 import { check, validationResult } from 'express-validator';
-
+import * as dotenv from "dotenv";
 
 export class ContactsController{
+
+    
+
     static async get(req: Request, res: Response){
         //para validar
         try {
@@ -21,9 +24,24 @@ export class ContactsController{
         check('comentario').notEmpty().withMessage('El mensaje no puede estar vacío')
     ];
 
-    
     static async add(req: Request, res: Response): Promise<void> {
         try {
+            //validar Recaptchap
+            dotenv.config() 
+            const captchaKeySecret = process.env.KEY_SECRET;
+            const resUserCaptcha = req.body['g-recaptcha-response'];
+            const captchaRes = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${captchaKeySecret}&response=${resUserCaptcha}`, {
+                method: 'POST',
+            });
+            const captchaVerified = await captchaRes.json() as { success: boolean };
+
+            if (!captchaVerified.success) {
+                return res.status(400).render('index', {
+                    errores: [{ msg: 'Captcha no verificado' }],
+                    datos: req.body
+                });
+            }
+
             //Validar datos
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
@@ -32,10 +50,17 @@ export class ContactsController{
 
             const {nombre, correo, telefono, comentario} = req.body
             const ip = (req.ip || "desconocida").replace('::ffff:', '');
-            console.log(ip)
-
+            //para localizar el pais de la ip
+            let pais= '';
+            try{
+                const resUb= await fetch(`https://ipapi.co/${ip}/json/`);
+                const datosUb= await resUb.json() as {pais_name?: string};
+                pais= datosUb.pais_name || '';
+            } catch (e){
+                pais= '';
+            }
             const fecha = new Date().toISOString().replace('T', ' ').substring(0, 19);
-            const guardarDatos = {nombre, correo, telefono, comentario, ip, fecha}
+            const guardarDatos = {nombre, correo, telefono, comentario, ip, fecha, pais}
 
             await ContactsModel.guardadoContacto(guardarDatos)
             
@@ -56,8 +81,10 @@ export class ContactsController{
             console.error('Error al guardar el contacto:', error);
         }
     }
-    //Pal recachat 6LcMPEcrAAAAAJuCxaFSoLMbnbkpWQb_J0a0mzAk esta es la clave segura
+    
     static async pago(req: Request, res: Response){
         res.render('mensaje_pago')
     }
+
 }
+

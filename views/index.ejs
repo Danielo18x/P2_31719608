@@ -105,7 +105,7 @@
             <h2> Contactanos </h2>
             <div class="contacto">
                 <div class="Formulario">
-                    <form action="/contact#contacto" method="post">
+                    <form action="/contact#contacto" method="post" id="form">
                         <input class="campo" type="text" placeholder="Nombre" name="nombre" id="nombre" >
                         <% if (errores) { %>
                             <% errores.forEach(error => { %>
@@ -140,6 +140,15 @@
                         <% } %>
                         <label class="recaptcha"> Marca la Casilla
                             <div class="g-recaptcha" data-sitekey="6LcMPEcrAAAAAMdmnGNBj2bey59YlazEimuxn8tG"></div>
+                            <% if (errores) { %>
+                                <% errores.forEach(error => { %>
+                                    <% if (error.msg === 'Captcha no verificado') { %>
+                                        <div class="cuadro_error">
+                                            <p class="error_mensaje"><%= error.msg %></p>
+                                        </div>
+                                    <% } %>
+                                <% }) %>
+                            <% } %>
                         </label>
                         <button type="submit" class="summit"> Enviar </button>
                     </form>
