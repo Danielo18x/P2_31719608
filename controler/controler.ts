@@ -29,9 +29,7 @@ export class ContactsController{
             //validar Recaptchap
             dotenv.config() 
             const captchaKeySecret = process.env.KEY_SECRET;
-            console.log(captchaKeySecret)
             const resUserCaptcha = req.body['g-recaptcha-response'];
-            console.log(resUserCaptcha)
             const captchaRes = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${captchaKeySecret}&response=${resUserCaptcha}`, {
                 method: 'POST',
             });
@@ -51,7 +49,7 @@ export class ContactsController{
             }
 
             const {nombre, correo, telefono, comentario} = req.body
-            const ip = (req.ip || "desconocida").replace('::ffff:', '');
+            const ip = req.ip || '';
 
             //para localizar el pais de la ip
             let pais= '';
