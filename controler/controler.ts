@@ -60,9 +60,9 @@ export class ContactsController{
                 const datosUb= await resUb.json() as {pais_name?: string};
                 pais= datosUb.pais_name || '';
             } catch (e){
-                pais= 'nulo';
+                pais= '';
+                console.log("pais nulo")
             }
-            console.log(pais)
             const fecha = new Date().toISOString().replace('T', ' ').substring(0, 19);
             const guardarDatos = {nombre, correo, telefono, comentario, ip, fecha, pais}
 
