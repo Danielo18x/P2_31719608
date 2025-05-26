@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
 import { ContactsModel } from "../model/model";
 import { check, validationResult } from 'express-validator';
+import nodemailer from "nodemailer";
 import * as dotenv from "dotenv";
 
 export class ContactsController{
-
-    
 
     static async get(req: Request, res: Response){
         //para validar
@@ -66,6 +65,39 @@ export class ContactsController{
             await ContactsModel.guardadoContacto(guardarDatos)
             
             res.render('mensaje_contacto');
+
+            //Enviar correo
+            dotenv.config();
+
+            const transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 587,
+                secure: false,
+                auth: {
+                    user: process.env.EMAIL_USER,
+                    pass: process.env.EMAIL_PASS,
+                },
+            });
+            try {
+                const mailOptions = {
+                    from: process.env.EMAIL_USER,
+                    to: "danianto2606@gmail.com",
+                    subject: "Nueva solicitud recibida",
+                    html: `
+                        <h3>Detalles de la solicitud:</h3>
+                        <p><strong>Nombre:</strong> ${nombre}</p>
+                        <p><strong>Correo:</strong> ${correo}</p>
+                        <p><strong>Comentario:</strong> ${comentario}</p>
+                        <p><strong>Dirección IP:</strong> ${ip}</p>
+                        <p><strong>País:</strong> ${pais}</p>
+                        <p><strong>Fecha/Hora:</strong> ${fecha}</p>
+                    `
+                };
+                    await transporter.sendMail(mailOptions);
+            } catch (error) {
+                console.error(error);
+                res.status(500).json({ message: "Error al enviar el correo" });
+            }
 
         } catch (error) {
             res.status(500).send('Error al guardar el contacto');
