@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { ContactsModel } from "../model/model";
-import { check, validationResult } from 'express-validator';
+import { check, checkSchema, validationResult } from 'express-validator';
 import nodemailer from "nodemailer";
 import * as dotenv from "dotenv";
 
@@ -114,10 +114,101 @@ export class ContactsController{
             console.error('Error al guardar el contacto:', error);
         }
     }
+
+    static async getpago(req: Request, res: Response){
+        //para validar
+        try {
+            res.render('form_pago', { datos: {}, errores: [] });
+        } catch (error) {
+            res.status(500).send('Error al cargar la página');
+            console.error('Error:', error);
+        }
+    }
+
+    static validate = [
+        //Validar datos del Formulario de pago
+        check('correo').isEmail().withMessage('Debe ser un correo valido'),
+        check('numTarjeta').custom(value => {
+            if (!/^\d{16}$/.test(value)) {
+                throw new Error('Numero de tarjeta no valido');
+            }
+            return true;
+        }),
+        check(['mesExp', 'yearExp', 'cvv']).custom((value, { req, path }) => {
+            const reglas = {
+                mesExp: /^\d{2}$/,
+                yearExp: /^\d{4}$/,
+                cvv: /^\d{3}$/
+            }
+
+            if (!reglas[path as keyof typeof reglas].test(value)) {
+                throw new Error('Formato inválido')
+            }
+            return true;
+        }),
+
+
+        check('nomTarjeta').matches(/^[a-zA-ZÀ-ÿ\s]{1,40}$/).withMessage('El nombre es obligatorio'),
+        check('monto').isFloat({ min: 1 }).withMessage('Monto invalido')
+    ];
     
-    static async pago(req: Request, res: Response){
-        res.render('mensaje_pago')
+
+
+    static async processPayment(req: Request, res: Response) {
+        try {
+            //Validar datos de entrada
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.render('form_pago', { errores: errors.array(), datos: req.body });
+            }
+
+
+            let { numTarjeta,  mesExp, yearExp, cvv,  nomTarjeta, monto, moneda } = req.body;
+            numTarjeta = String(numTarjeta).replace(/\s+/g, '');
+            const description = 'service';
+            const reference = '011';
+
+            const response = await fetch('https://fakepayment.onrender.com/payments', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZmFrZSBwYXltZW50IiwiZGF0ZSI6IjIwMjUtMDUtMjZUMTg6NTk6MzcuNjAwWiIsImlhdCI6MTc0ODI4NTk3N30.zumxTWH0WUBgb87jvMob5XOO4dWHDoCXhPECImhLykw' },
+                body: JSON.stringify({
+                    amount: String(monto),
+                    "card-number": numTarjeta,
+                    cvv: String(cvv),
+                    "expiration-month": mesExp,
+                    "expiration-year": yearExp,
+                    "full-name": nomTarjeta,
+                    currency: String(moneda),
+                    description,
+                    reference
+                }, null, 2)
+            });
+
+            //console.log('Status de respuesta:', response.status);
+            const text = await response.text();
+            //console.log('Respuesta de la API:', text);
+
+            let result;
+            try {
+                result = JSON.parse(text);
+            } catch (e) {
+                return res.render('mensaje_pago_fallo', { title: "Pago", error: "La API de pago no respondió correctamente." });
+            }
+
+            if (result.success) {
+                return res.render('mensaje_pago_exito', { title: "Pago Exitoso" });
+            } else {
+                return res.render('mensaje_pago_fallo', { title: "Pago", error: result.message });
+            }
+        } catch (error) {
+            console.log('Error en el pago:', error);
+            return res.render('mensaje_pago_fallo', { title: "Pago", error: "Error procesando el pago." });
+        }
     }
     
+
+    
 }
+
+
 

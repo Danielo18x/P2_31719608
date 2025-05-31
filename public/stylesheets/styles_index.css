@@ -233,7 +233,12 @@ li {
 /*SECCION 4: SERVICIOS*/
 
 .seccion4-servicios{
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: none;
     min-height: 100dvh;
     background-image: url(../images/imagen4.jpg);
     overflow: hidden;
@@ -246,26 +251,37 @@ li {
     gap: 1.5rem;
     justify-items: center;
     align-items: center;
-}   
+}
+
+.button_service{
+    background-color: #1f737e;
+    color:#e1f2ff;
+    border-radius:3px;
+    margin-bottom: 1.3rem;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    transition: all 0.2s ease;
+    width: 250px
+}
+
+.button_service:focus{
+    border: 1px solid #2d93a2;
+    background-color: #2d93a2;
+}
 
 .seccion4-servicios h2{
+    overflow: hidden;
     text-align: center;
     font-size: 30pt;
     font-weight: 800;
     text-decoration: underline;
     color:#09446d;
     padding-top: 5vh;
-    padding-bottom: 5vh;
-    margin: 5rem 0;
+    padding-bottom: 1vh;
 }
 
-.text_3{
-    text-align: center;
-    font-size: 20pt;
-    color:#09446d;
-    font-weight: 700;
-    font-size: clamp(0.9rem, 1.5vw, 2rem);
-}
 
 .tarjetas {
     width: 340px;
@@ -283,11 +299,10 @@ li {
 }
 
 
-.tarjetas a{
+.tarjetas h3{
     text-align: center;
     margin: 10px 0;
     color: #e0e9f0;
-    text-decoration: none;
 }
 
 .tarjetas a:hover{

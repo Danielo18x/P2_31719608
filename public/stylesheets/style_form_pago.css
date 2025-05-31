@@ -103,7 +103,7 @@ body{
 
 .monto{
     display: flex;
-    gap: 0.1rem;
+    flex-direction: row;
 }
 
 .campo_monto{
@@ -119,6 +119,7 @@ body{
     margin: 0.2cm 0;
     border: 1px solid black;
     border-radius:5px;
+
 }
 
 .summit{
@@ -138,6 +139,29 @@ body{
     border: 1px solid  #145987;
     background-color: #145987;
 }
+
+.error_mensaje{
+    display: flex;
+    color: red;
+    background-color: #09446d;
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+    font-weight: 500 ;
+}
+
+
+.cuadro_error{
+    width: 100%;
+}
+
+.mensajes_error{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 
 
 @media (max-width: 800px) and (orientation: portrait){

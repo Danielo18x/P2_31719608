@@ -7,41 +7,77 @@
         <link rel="stylesheet" href="../stylesheets/style_form_pago.css">
         <link rel="icon" type="image/png" href="../images/iconito_form_pago.png">
         <script src="/javascript/add_services.js"></script>
-        <title> <%= title %> </title>
+        <title> pago </title>
     </head>
     <body>
         <div class="pago">
             <div class="imagen6"></div>
             <div class="Form_pago">
-                <form action="/payment" method="post">
-                    <h2> Pago con tarjeta </h2>
+                <form action="/pago/payment#" method="post" id="form">
+                    <h2 id="form_pa"> Pago con tarjeta </h2>
                     <label> Servicio
-                        <input class="campo_services" type="text" required title="Ingrese su correo" id="servicio" readonly>
+                        <select class="campo_services" name="servicio">
+                            <option value="Reparación_Hardware">Reparación de Hardware</option>
+                            <option value="Solución_Problemas_Software">Solución de Problemas de Software</option>
+                            <option value="Mantenimiento_Preventivo">Mantenimiento Preventivo</option>
+                        </select>
                     </label>
                     <label> Correo electrónico
-                        <input class="campo_correo" type="email" required title="Ingrese su correo">
+                        <input class="campo_correo" type="email" placeholder="Correo" name="correo" id="correo" title="Correo electrónico" value="<%= datos?.correo || '' %>">
+                        <% if (errores) { %>
+                            <% errores.forEach(error => { %>
+                                <% if (error.path === 'correo') { %>
+                                    <div class="cuadro_error"> <p class="error_mensaje"><%= error.msg %></p> </div>
+                                <% } %>
+                            <% }) %>
+                        <% } %>
                     </label>
                     <label> Informacion de la tarjeta
-                        <input class="campo_tarjeta" type="text" required placeholder="1234 1234 1234 1234" pattern="[0-9]+" maxlength="16" minlength="16" step="1" title="Numero de tarjeta">
+                        <input class="campo_tarjeta" name="numTarjeta" type="text" placeholder="1234 1234 1234 1234"  maxlength="16" title="Numero de tarjeta" value="<%= datos?.numTarjeta || '' %>">
+                        <% if (errores) { %>
+                            <% errores.forEach(error => { %>
+                                <% if (error.path === 'numTarjeta') { %>
+                                    <div class="cuadro_error"> <p class="error_mensaje"><%= error.msg %></p> </div>
+                                <% } %>
+                            <% }) %>
+                        <% } %>
                         <div class="tarjeta">
-                            <input class="campo_date" type="number" min="1" max="12" step="1" placeholder="MM" required maxlength="2" minlength="2" title="Mes de expiración">
-                            <input class="campo_date" type="text" step="1" pattern="[0-9]+" placeholder="AA" required maxlength="2" minlength="2" title="Año de expiracion">
-                            <input class="campo_date" type="text" placeholder="CVV/CVC" pattern="[0-9]+" step="1" required maxlength="3" minlength="3" title="Código de seguridad">
+                            <input class="campo_date" name="mesExp" type="text" placeholder="MM" maxlength="2" title="Mes de expiración" value="<%= datos?.mesExp || '' %>">
+                            <input class="campo_date" name="yearExp" type="text"  placeholder="AAAA"  maxlength="4"  title="Año de expiracion" value="<%= datos?.yearExp || '' %>">
+                            <input class="campo_date" name="cvv" type="text" placeholder="CVV/CVC"  maxlength="3"  title="Código de seguridad" value="<%= datos?.yearExp || '' %>">
                         </div>
+                        <% if (errores.some(error => ['mesExp', 'yearExp', 'cvv'].includes(error.path))) { %>
+                            <div class="cuadro_error">
+                                <p class="error_mensaje"> Verifique los datos ingresados </p>
+                            </div>
+                        <% } %>
                     </label>
-                    
                     <label> Nombre del Titular de la Tarjeta
-                        <input class="campo_nombre" type="text" required placeholder="Nombre Completo" title="Ingrese su Nombre Completo">
+                        <input class="campo_nombre" type="text" name="nomTarjeta"  placeholder="Nombre Completo" title="Ingrese su Nombre Completo" value="<%= datos?.nomTarjeta || '' %>">
+                        <% if (errores) { %>
+                            <% errores.forEach(error => { %>
+                                <% if (error.path === 'nomTarjeta') { %>
+                                    <div class="cuadro_error"> <p class="error_mensaje"><%= error.msg %></p> </div>
+                                <% } %>
+                            <% }) %>
+                        <% } %>
                     </label>
                     <label> Monto
                         <div class="monto">
-                            <input class="campo_monto" type="number" required step="0.01" min="0">
-                            <select class="select_moneda" id="moneda" name="currency" pattern="[0-9]+">
+                            <input class="campo_monto" name="monto" type="text"  value="<%= datos?.monto || '' %>">
+                            <select class="select_moneda" id="moneda" name="moneda" pattern="[0-9]+">
                                 <option value="USD">USD</option>
                                 <option value="EUR">EUR</option>
                                 <option value="VES">VES</option>
                             </select>
                         </div>
+                        <% if (errores) { %>
+                            <% errores.forEach(error => { %>
+                                <% if (error.path === 'monto') { %>
+                                    <div class="cuadro_error"> <p class="error_mensaje"><%= error.msg %></p> </div>
+                                <% } %>
+                            <% }) %>
+                        <% } %>
                     </label>
                     <button type="submit" class="summit"> Pagar </button>
                 </form>
