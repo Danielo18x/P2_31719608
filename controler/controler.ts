@@ -81,7 +81,7 @@ export class ContactsController{
             try {
                 const mailOptions = {
                     from: process.env.EMAIL_USER,
-                    to: "danianto2606@gmail.com",
+                    to: "programacion2ais@yopmail.com",
                     subject: "Nueva solicitud recibida",
                     html: `
                         <h3>Detalles de la solicitud:</h3>

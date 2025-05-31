@@ -6,6 +6,8 @@ const app = express();
 dotenv.config() 
 const puerto= process.env.PORT
 
+//NOTA IMPORTANTE: en https://reparatech.onrender.com/admin/contacts esta la tabla de contactos.
+
 clear(true);
 
 
