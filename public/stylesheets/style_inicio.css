@@ -1,0 +1,136 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-size: cover;
+    min-height: 100vh;
+    font-family: sans-serif, Arial, Helvetica;
+    padding: 0;
+    margin: 0;
+    padding-right: 0;
+    overflow-x: hidden;
+    background-color: #e1f2ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.cuadro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 580px;
+    background: #09446d;
+    box-sizing: boder-box;
+    padding: 50px;
+    border-radius: 50px;
+    box-shadow: 0 0 15px 0px #4b4b4b;
+}
+
+.img_user{
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    padding: 100px;
+    margin: auto;
+    box-sizing: border-box;
+    background-image: url(../images/user.png);
+    background-size: contain;
+    border-color: black;
+    border: 10px;
+}
+
+
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20pt;
+    text-align: center;
+    color: #e1f2ff;
+    
+}
+
+.Form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 325px;
+    height: 170px;
+    padding: 10px;
+    color: #e1f2ff;
+    
+}
+
+.campo{
+    width: 100%;
+    height: 0.5cm;
+    padding: 0.45cm;
+    margin: 0.2cm 0;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    outline: none;
+    color: #e1f2ff
+}
+
+.campo::placeholder{
+    color: #e1f2ff;
+}
+
+.campo:hover{
+    border-bottom: 2px solid #e1f2ff;
+}
+
+.campo:focus{
+    border-bottom: 2px solid #e1f2ff;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.campo2{
+    width: 100%;
+    height: 1.3cm;
+    padding: 0.25cm;
+    margin: 0.1cm;
+    background-color:  #b0d4eb ;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15pt;
+    font-weight: 700;
+    border-color: transparent;
+    color: #09446d;
+    
+    
+}
+
+.sesion_google{
+    width: 100%;
+    height: 1.3cm;
+    margin: 0.25cm;
+    padding: 0.25cm;
+    background-color:  #7fb6d8;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15pt;
+    font-weight: 700;
+    border-color: transparent;
+    color: #09446d;
+}
+

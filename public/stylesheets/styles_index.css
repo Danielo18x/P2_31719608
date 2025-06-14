@@ -58,6 +58,7 @@ header{
     height: auto;
     display: flex;
     align-items: start;
+    justify-content: center;
     flex-direction: row;
     position: flex-end;
     top: 0;
@@ -71,6 +72,8 @@ header{
     gap: 1rem;
     margin: 0.2rem;
     left: 0;
+    justify-content: center;
+    align-items: center;
 }
 
 .links-nav a{
