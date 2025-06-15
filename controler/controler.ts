@@ -206,9 +206,19 @@ export class ContactsController{
         }
     }
     
+    static async adminGet(req: Request, res: Response){
+        //para validar
+        try {
+            res.render('inicio', { datos: {}, errores: [] });
+        } catch (error) {
+            res.status(500).send('Error al cargar la página');
+            console.error('Error:', error);
+        }
+    } // fue agregado recientemente
 
-    
 }
+
+
 
 
 

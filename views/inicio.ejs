@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/ico" href="../images/iconito.ico">
-    <link rel="stylesheet" href="./stylesheets/style_inicio.css">
+    <link rel="stylesheet" href="../stylesheets/style_inicio.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title> Reparatech login </title>
 </head>
@@ -13,9 +13,9 @@
         <div class="cuadro">
             <div class="img_user"></div>
             <h2> Sesión Administrador </h2>
-            <form class="Form">
-                <input class="campo" type="email" placeholder="Usuario" title="Complete este campo">
-                <input class="campo" type="password" placeholder="Contraseña" title="Complete este campo">
+            <form action="/login/logout" class="Form" method="post" id="form">
+                <input class="campo" type="text" placeholder="Usuario" title="Complete este campo" name="user" id="user">
+                <input class="campo" type="password" placeholder="Contraseña" title="Complete este campo" name="password" id="password">
                 <button class="campo2" type="submit"> Iniciar sesión </button>
                 <button class="sesion_google" type="submit"> <i class="fab fa-google"></i> Iniciar sesión con Google</button>
             </form>
