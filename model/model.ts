@@ -1,7 +1,8 @@
 import  sqlite3  from "sqlite3";
 import { open } from "sqlite";
 import bcrypt from "bcrypt";
-
+import * as dotenv from "dotenv";
+dotenv.config() 
 
 
 
@@ -31,18 +32,37 @@ export class ContactsModel{
         await db.close()
     }
 
-    static async user(admin: { user: string; password: string}){
+    static async user(){
+        
         const db = await this.conectionDataBase()
         await db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, password_hash TEXT, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);")
         
-        const hashedPassword = await bcrypt.hash(admin.password, 10);
+        const username = process.env.USER
+        const password = process.env.PASSWORD
+        console.log("PASSWORD desde .env:", process.env.PASSWORD);
+
+        if (!username || !password) {
+            throw new Error("Las variables USER o PASSWORD no están definidas en el archivo .env");
+        }
+
+        const usuarioExistente = await db.get("SELECT * FROM users WHERE username = ?", [username]);
+
+        if (usuarioExistente) {
+            console.log("⚠️ El usuario ya existe, no se insertará nuevamente.");
+            await db.close();
+            return;
+        }
+        
+        const hashedPassword = await bcrypt.hash(password, 10);
         
         await db.run("INSERT INTO users(username, password_hash) VALUES(?, ?)", 
-            admin.user, hashedPassword
+            username, hashedPassword
         )
 
         await db.close();
     }
+
+    
 
     static async getUserByUsername(username: string) {
         const db = await this.conectionDataBase();

@@ -1,4 +1,4 @@
- //se agrego ahorita
+//se agrego ahorita
 //import {Router} from 'express';
 import express from "express";
 import { Router } from "express"; //se agrego ahorita
@@ -17,16 +17,6 @@ router.use(session({
     saveUninitialized: false
 }));
 
-// Registro de usuario
-router.post("/register", async (req, res) => {
-    const { user, password } = req.body;
-    try {
-        await ContactsModel.user({ user, password });
-        res.json({ message: "Usuario registrado exitosamente" });
-    } catch (error) {
-        res.status(500).json({ error: "Error al registrar usuario" });
-    }
-});
 
 declare module "express-session" {
     interface SessionData {
@@ -34,16 +24,27 @@ declare module "express-session" {
     }
 }
 
+(async () => {
+    await ContactsModel.user();
+})();
+
+
+
 // Login de usuario
 router.post("/login", async (req, res) => {
     const { user, password } = req.body;
     const usuario = await ContactsModel.getUserByUsername(user);
 
-    if (!usuario) return res.status(401).json({ error: "Usuario no encontrado" });
+    if (!usuario){
+        res.status(401).json({ error: "Usuario no encontrado" });
+        
+        //res.status(500).send('Usuario no encontrado');
+    } 
 
     const match = await bcrypt.compare(password, usuario.password_hash);
-    if (!match) return res.status(401).json({ error: "Contraseña incorrecta" });
-
+    if (!match){
+        res.status(401).json({ error: "Contraseña incorrecta" });
+    }
     req.session.userId = usuario.id;
     res.json({ message: "Login exitoso" });
 });
