@@ -13,11 +13,11 @@
         <div class="cuadro">
             <div class="img_user"></div>
             <h2> Sesión Administrador </h2>
-            <form action="/login/login" class="Form" method="post" id="form">
-                <input class="campo" type="text" placeholder="Usuario" title="Complete este campo" name="user" id="user">
-                <input class="campo" type="password" placeholder="Contraseña" title="Complete este campo" name="password" id="password">
+            <form action="/login/admin" class="Form" method="post" id="form">
+                <input class="campo" type="text" placeholder="Usuario" title="Complete este campo" name="user" id="user" required>
+                <input class="campo" type="password" placeholder="Contraseña" title="Complete este campo" name="password" id="password" required>
                 <button class="campo2" type="submit"> Iniciar sesión </button>
-                <button class="sesion_google" type="submit"> <i class="fab fa-google"></i> Iniciar sesión con Google</button>
+                <button class="sesion_google" onclick="window.location.href='/login/auth/google'"> <i class="fab fa-google"></i> Iniciar sesión con Google </button>
             </form>
         </div>
     </div>
