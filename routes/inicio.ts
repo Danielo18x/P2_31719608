@@ -13,6 +13,7 @@ import dotenv from "dotenv";
 
 const router = Router();
 router.use(express.json());
+router.use(express.static('public'));
 dotenv.config() 
 //  Configurar sesión
 router.use(session({
@@ -81,6 +82,8 @@ passport.deserializeUser((user: User, done) => {
 });
 
 
+
+
 declare module "express-session" {
     interface SessionData {
         userId?: number;
@@ -137,11 +140,22 @@ router.get("/auth/google/callback", passport.authenticate("google", {
 
 router.get("/admin", (req, res) => {
     if (req.isAuthenticated() || req.session.userId) {
-        res.render("mensaje_pago_exito"); // o cualquier vista que tengas
+        res.render("panel_admin"); // o cualquier vista que tengas
     } else {
         res.redirect("/login");
     }
 });
+
+/*router.get("/admin/contacts", (req, res) => {
+    if (req.isAuthenticated()) {
+        res.render("contacts"); // o cualquier vista que tengas
+    } else {
+        res.redirect("/login");
+    }
+});*/
+
+router.get('/admin/contacts', ContactsController.access);
+
 
 
 router.get("/", ContactsController.adminGet);

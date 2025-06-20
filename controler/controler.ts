@@ -81,7 +81,7 @@ export class ContactsController{
             try {
                 const mailOptions = {
                     from: process.env.EMAIL_USER,
-                    to: "programacion2ais@yopmail.com",
+                    to: /*"programacion2ais@yopmail.com",*/ "danianto2606@gmail.com",
                     subject: "Nueva solicitud recibida",
                     html: `
                         <h3>Detalles de la solicitud:</h3>
@@ -107,8 +107,13 @@ export class ContactsController{
 
     static async access(req: Request, res: Response){
         try {
-            const contacts = await ContactsModel.accesoContacto();
-            res.render('contacts', {contacts});
+            if (req.isAuthenticated()) {
+                const contacts = await ContactsModel.accesoContacto();
+                res.render('contacts', {contacts});// o cualquier vista que tengas
+            } else {
+                res.redirect("/login");
+            }
+            
         } catch (error) {
             res.status(500).send('Error al obtener los contactos');
             console.error('Error al guardar el contacto:', error);

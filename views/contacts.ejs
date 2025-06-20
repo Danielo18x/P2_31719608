@@ -1,54 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../stylesheets/style_panel_admin.css">
-    <link rel="icon" type="image/ico" href="../images/iconito.ico">
+    <link rel="stylesheet" href="../stylesheets/style_panel.css">
+    <link rel="icon" type="image/png" href="../images/iconito2.ico">
+    <script src="../Javascripts/barra_busqueda.js"></script>
     <title> Reparatech Admin</title>
 </head>
 <body>
-    <h1> Panel Administrador Reparatech </h1>
-    <table class="tabla">
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Telefono</th>
-            <th>Mensaje</th>
-            <th>IP</th>
-            <th>Fecha</th>
-            <th>Pais</th>
-        </tr>
-        <% contacts.forEach(contact => { %>
-        <tr>
-            <td>
-                <p><%= contact.id %></p>
-            </td>
-            <td>
-                <p><%= contact.Nombre %></p>
-            </td>
-            <td>
-                <p><%= contact.Correo %></p>
-            </td>
-            <td>
-                <p><%= contact.Telefono %></p>
-            </td>
-            <td>
-                <p><%= contact.Mensaje %></p>
-            </td>
-            <td>
-                <p><%= contact.Ip %></p>
-            </td>
-            <td>
-                <p><%= contact.Fecha_Hora %></p>
-            </td>
-            <td>
-                <p><%= contact.Pais %></p>
-            </td>
-        </tr>
-        <% }); %>
-    </table>
-    </main>
+    <%- include("template/navbar_admin")%>
+    <div class="fondo">
+        <h1> Registro de Contactos </h1>
+        <input type="text" id="busqueda" placeholder="Nombre/Correo" class="busqueda" title="Buscar contacto"/>
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                    <th>Mensaje</th>
+                    <th>IP</th>
+                    <th>Fecha</th>
+                    <th>Pais</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-contactos">
+                <% contacts.forEach(contact => { %>
+                    <tr>
+                        <td>
+                            <p><%= contact.id %></p>
+                        </td>
+                        <td>
+                            <p><%= contact.Nombre %></p>
+                        </td>
+                        <td>
+                            <p><%= contact.Correo %></p>
+                        </td>
+                        <td>
+                            <p><%= contact.Telefono %></p>
+                        </td>
+                        <td>
+                            <p><%= contact.Mensaje %></p>
+                        </td>
+                        <td>
+                            <p><%= contact.Ip %></p>
+                        </td>
+                        <td>
+                            <p><%= contact.Fecha_Hora %></p>
+                        </td>
+                        <td>
+                            <p><%= contact.Pais %></p>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

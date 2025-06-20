@@ -34,7 +34,7 @@ app.set('trust proxy', true);
 
 app.use('/', indexRouter); //Ruta principal :D
 app.use('/pago', formPagoRouter);
-app.use('/admin', adminContactRouter);
+//app.use('/admin', adminContactRouter);
 app.use('/login', adminInicioRouter); //agregado recientemente
 
 
