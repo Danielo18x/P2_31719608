@@ -1,7 +1,5 @@
-//se agrego ahorita
-//import {Router} from 'express';
 import express from "express";
-import { Router } from "express"; //se agrego ahorita
+import { Router } from "express";
 import {ContactsController} from '../controler/controler';
 import session from "express-session";
 import { ContactsModel } from "../model/model";
@@ -25,7 +23,7 @@ router.use(session({
         sameSite: 'lax',
         //secure: process.env.NODE_ENV === 'production', descomentar cuando trabaje con render
         secure: false,
-        maxAge: 15 * 60 * 1000 // 15 minutos
+        maxAge: 15 * 60 * 1000
     }
 }));
 
@@ -37,23 +35,9 @@ router.use(passport.session());
 declare module "express-session" {
     interface SessionData {
         userId?: number;
-        ultimaAccion?: number; // 🛠️ Aquí defines la propiedad nueva
+        ultimaAccion?: number;
     }
 }
-
-/*router.use((req, res, next) => {
-    const now = Date.now();
-    const INACTIVITY_LIMIT = 2 * 60 * 1000; // 15 minutos
-
-    if (req.session.ultimaAccion && now - req.session.ultimaAccion > INACTIVITY_LIMIT) {
-        req.session.destroy(() => {
-        res.redirect("/login");
-        });
-    } else {
-        req.session.ultimaAccion = now;
-        next();
-    }
-});*/
 
 router.use((req, res, next) => {
     const rutasExentas = ["/login", "/admin", "/auth/google", "/auth/google/callback"];
@@ -70,26 +54,6 @@ router.use((req, res, next) => {
         next();
     }
 });
-
-
-
-
-//  Estrategia de Google
-/*passport.use(new GoogleStrategy(
-    {
-        clientID: process.env.GOOGLE_CLIENT_ID!,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-        callbackURL: process.env.GOOGLE_CALLBACK_URL!
-    },
-    async (_accessToken, _refreshToken, profile, done) => {
-        const usuario = {
-        id: profile.id,
-        username: profile.displayName,
-        email: profile.emails?.[0].value
-        };
-        return done(null, usuario);
-    }
-    ));*/
 
 passport.use(new GoogleStrategy(
     {
@@ -164,7 +128,7 @@ router.post("/admin", async (req, res) => {
 // Logout de usuario
 router.post("/logout", (req, res) => {
     req.session.destroy(() => res.json({ message: "Sesión cerrada" }));
-    req.session.destroy(() => res.redirect("/login")); //hay que probar a ver que tal
+    req.session.destroy(() => res.redirect("/login"));
 
 });
 
@@ -177,10 +141,6 @@ router.get("/auth/google/callback", passport.authenticate("google", {
     successRedirect: "/login/admin"
 }));
 
-
-/*router.get("/login", (req, res) => {
-  res.render("inicio"); // Asegúrate de que 'inicio' es tu archivo .ejs
-});*/
 
 router.get("/admin", (req, res) => {
     if (req.isAuthenticated() || req.session.userId) {
@@ -197,18 +157,6 @@ router.get("/logout", (req, res) => {
 });
 
 
-
-/*router.get("/admin/contacts", (req, res) => {
-    if (req.isAuthenticated()) {
-        res.render("contacts"); // o cualquier vista que tengas
-    } else {
-        res.redirect("/login");
-    }
-});*/
-
-
-
-
 router.get('/admin/contacts', ContactsController.access);
 router.get('/admin/payments', ContactsController.accessPayment);
 
@@ -217,6 +165,6 @@ router.get('/admin/payments', ContactsController.accessPayment);
 router.get("/", ContactsController.adminGet);
 
 
-export default router; //todo el archivo fue agregado recientemente
+export default router; 
 
 

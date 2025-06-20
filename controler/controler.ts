@@ -109,7 +109,7 @@ export class ContactsController{
         try {
             if (req.isAuthenticated() || req.session.userId) {
                 const contacts = await ContactsModel.accesoContacto();
-                res.render('contacts', {contacts});// o cualquier vista que tengas
+                res.render('contacts', {contacts});
             } else {
                 res.redirect("/login");
             }
@@ -226,7 +226,7 @@ export class ContactsController{
         try {
             if (req.isAuthenticated() || req.session.userId) {
                 const payments = await ContactsModel.accesoPagos();
-                res.render('payments', {payments});// o cualquier vista que tengas
+                res.render('payments', {payments});
             } else {
                 res.redirect("/login");
             }
@@ -247,7 +247,7 @@ export class ContactsController{
             res.status(500).send('Error al cargar la página');
             console.error('Error:', error);
         }
-    } // fue agregado recientemente
+    } 
 
 }
 

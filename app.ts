@@ -6,14 +6,11 @@ const app = express();
 dotenv.config() 
 const puerto= process.env.PORT
 
-//NOTA IMPORTANTE: en https://reparatech.onrender.com/admin/contacts esta la tabla de contactos.
-
 clear(true);
 
 
 import indexRouter from "./routes/index"
 import formPagoRouter from "./routes/form_pago"
-import adminContactRouter from "./routes/admin_contact"
 import adminInicioRouter from "./routes/inicio" //agregado recientemente
 
 
@@ -34,8 +31,7 @@ app.set('trust proxy', true);
 
 app.use('/', indexRouter); //Ruta principal :D
 app.use('/pago', formPagoRouter);
-//app.use('/admin', adminContactRouter);
-app.use('/login', adminInicioRouter); //agregado recientemente
+app.use('/login', adminInicioRouter); 
 
 
 app.use((_req, res, _next) => {

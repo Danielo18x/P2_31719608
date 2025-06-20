@@ -86,7 +86,7 @@ export class ContactsModel{
         const user = await db.get("SELECT * FROM users WHERE username = ?", [username]);
         await db.close();
         return user;
-    } //se agrego ahorita, no se si esta bueno
+    }
 
 
 
