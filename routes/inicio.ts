@@ -21,8 +21,8 @@ router.use(session({
     cookie: {
         httpOnly: true,
         sameSite: 'lax',
-        //secure: process.env.NODE_ENV === 'production', descomentar cuando trabaje con render
-        secure: false,
+        secure: process.env.NODE_ENV === 'production',
+        //secure: false,
         maxAge: 15 * 60 * 1000
     }
 }));
