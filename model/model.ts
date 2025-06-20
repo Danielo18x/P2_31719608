@@ -32,6 +32,23 @@ export class ContactsModel{
         await db.close()
     }
 
+    static async guardarPago(payment: { servicio: string; monto: string; moneda: string; fecha: string; estado_pago: string}){
+        const db = await this.conectionDataBase()
+        await db.run("CREATE TABLE IF NOT EXISTS pagos(id INTEGER PRIMARY KEY AUTOINCREMENT, Servicio TEXT, Monto TEXT, Moneda TEXT, Fecha TEXT, Estado_Pago TEXT)")
+
+        await db.run("INSERT INTO pagos(Servicio, Monto, Moneda, Fecha, Estado_Pago) VALUES(?, ?, ?, ?, ?)", 
+            payment.servicio, payment.monto, payment.moneda, payment.fecha, payment.estado_pago
+        )
+        await db.close()
+    }
+
+    static async accesoPagos(){
+        const db = await this.conectionDataBase();
+        const pagos =  await db.all('SELECT id, Servicio, Monto, Moneda, Fecha, Estado_Pago FROM pagos')
+        return pagos;
+        await db.close()
+    }
+
     static async user(){
         
         const db = await this.conectionDataBase()

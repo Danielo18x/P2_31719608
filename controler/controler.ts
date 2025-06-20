@@ -107,7 +107,7 @@ export class ContactsController{
 
     static async access(req: Request, res: Response){
         try {
-            if (req.isAuthenticated()) {
+            if (req.isAuthenticated() || req.session.userId) {
                 const contacts = await ContactsModel.accesoContacto();
                 res.render('contacts', {contacts});// o cualquier vista que tengas
             } else {
@@ -168,7 +168,7 @@ export class ContactsController{
             }
 
 
-            let { numTarjeta,  mesExp, yearExp, cvv,  nomTarjeta, monto, moneda } = req.body;
+            let { numTarjeta,  mesExp, yearExp, cvv,  nomTarjeta, monto, moneda, servicio } = req.body;
             numTarjeta = String(numTarjeta).replace(/\s+/g, '');
             const description = 'service';
             const reference = '011';
@@ -199,6 +199,16 @@ export class ContactsController{
             } catch (e) {
                 return res.render('mensaje_pago_fallo', { title: "Pago", error: "La API de pago no respondió correctamente." });
             }
+            const fecha = new Date().toISOString().replace('T', ' ').substring(0, 10);
+            let status
+            if(result.message){
+                status = "Exitoso"
+            } else{
+                status = "Fallido"
+            }
+            const estado_pago = status;
+            const guardarDato = {servicio, monto, moneda, fecha, estado_pago}
+            await ContactsModel.guardarPago(guardarDato)
 
             if (result.success) {
                 return res.render('mensaje_pago_exito', { title: "Pago Exitoso" });
@@ -210,6 +220,24 @@ export class ContactsController{
             return res.render('mensaje_pago_fallo', { title: "Pago", error: "Error procesando el pago." });
         }
     }
+
+    //acceder a los pagos
+    static async accessPayment(req: Request, res: Response){
+        try {
+            if (req.isAuthenticated() || req.session.userId) {
+                const payments = await ContactsModel.accesoPagos();
+                res.render('payments', {payments});// o cualquier vista que tengas
+            } else {
+                res.redirect("/login");
+            }
+            
+        } catch (error) {
+            res.status(500).send('Error al obtener los contactos');
+            console.error('Error al guardar el contacto:', error);
+        }
+    }
+
+
     
     static async adminGet(req: Request, res: Response){
         //para validar

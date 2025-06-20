@@ -139,7 +139,7 @@ button:focus{
     background-color:  #b0d4eb;
 }
 
-/*Panel de Contactos*/
+/*Panel de Contactos y Pagos*/
 
 .fondo{
     display: flex;
@@ -148,6 +148,7 @@ button:focus{
     justify-content: flex-start;
     width: 100vw;
     height: 100vh;
+    gap: 5px;
 }
 
 h1{
@@ -176,6 +177,13 @@ td{
     padding-right: 10px;
 }
 
+.filtros{
+    display: flex;
+    flex-direction: row;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
 /*Barra de  busqueda*/
 
 .busqueda{
@@ -191,6 +199,33 @@ td{
     background: white;
     outline: none;
 }
+
+
+.campos{
+    width: 200px;
+    border: 2px solid black;
+    border-radius:5px;
+    height: 0.8cm;
+    
+    font-size: 0.8rem;
+    padding: 0.05cm;
+    margin-bottom: 5px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: #09446d;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: sans-serif, Arial, Helvetica;
+}
+
+
+
+
+
+
 
 @media (max-width: 800px) and (orientation: portrait){
     .panel{

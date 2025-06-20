@@ -582,7 +582,11 @@ footer a:hover{
         width: 100%;
     }
 
-    .barra-navegacion{
+    /*.barra-navegacion{
+        display: none;
+    }*/
+
+    .linknone{
         display: none;
     }
 

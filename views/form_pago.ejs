@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../stylesheets/style_form_pago.css">
         <link rel="icon" type="image/png" href="../images/iconito_form_pago.png">
-        <script src="/javascript/add_services.js"></script>
         <title> Pagos Reparatech </title>
     </head>
     <body>
@@ -16,10 +15,10 @@
                 <form action="/pago/payment#" method="post" id="form">
                     <h2 id="form_pa"> Pago con tarjeta </h2>
                     <label> Servicio
-                        <select class="campo_services" name="servicio">
-                            <option value="Reparación_Hardware">Reparación de Hardware</option>
-                            <option value="Solución_Problemas_Software">Solución de Problemas de Software</option>
-                            <option value="Mantenimiento_Preventivo">Mantenimiento Preventivo</option>
+                        <select class="campo_services" name="servicio" id="servicio">
+                            <option value="Reparación de Hardware">Reparación de Hardware</option>
+                            <option value="Solución de Problemas de Software">Solución de Problemas de Software</option>
+                            <option value="Mantenimiento Preventivo">Mantenimiento Preventivo</option>
                         </select>
                     </label>
                     <label> Correo electrónico
@@ -64,7 +63,7 @@
                     </label>
                     <label> Monto
                         <div class="monto">
-                            <input class="campo_monto" name="monto" type="text"  value="<%= datos?.monto || '' %>">
+                            <input class="campo_monto" name="monto" type="text" id="monto" value="<%= datos?.monto || '' %>">
                             <select class="select_moneda" id="moneda" name="moneda" pattern="[0-9]+">
                                 <option value="USD">USD</option>
                                 <option value="EUR">EUR</option>

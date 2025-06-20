@@ -19,13 +19,60 @@ dotenv.config()
 router.use(session({
     secret: process.env.SESSION_SECRET!,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        sameSite: 'lax',
+        //secure: process.env.NODE_ENV === 'production', descomentar cuando trabaje con render
+        secure: false,
+        maxAge: 15 * 60 * 1000 // 15 minutos
+    }
 }));
 
 
 //  Inicializar Passport
 router.use(passport.initialize());
 router.use(passport.session());
+
+declare module "express-session" {
+    interface SessionData {
+        userId?: number;
+        ultimaAccion?: number; // 🛠️ Aquí defines la propiedad nueva
+    }
+}
+
+/*router.use((req, res, next) => {
+    const now = Date.now();
+    const INACTIVITY_LIMIT = 2 * 60 * 1000; // 15 minutos
+
+    if (req.session.ultimaAccion && now - req.session.ultimaAccion > INACTIVITY_LIMIT) {
+        req.session.destroy(() => {
+        res.redirect("/login");
+        });
+    } else {
+        req.session.ultimaAccion = now;
+        next();
+    }
+});*/
+
+router.use((req, res, next) => {
+    const rutasExentas = ["/login", "/admin", "/auth/google", "/auth/google/callback"];
+
+    if (rutasExentas.includes(req.path)) return next();
+
+    const now = Date.now();
+    const INACTIVITY_LIMIT = 15 * 60 * 1000;
+
+    if (req.session.ultimaAccion && now - req.session.ultimaAccion > INACTIVITY_LIMIT) {
+        req.session.destroy(() => res.redirect("/login"));
+    } else {
+        req.session.ultimaAccion = now;
+        next();
+    }
+});
+
+
+
 
 //  Estrategia de Google
 /*passport.use(new GoogleStrategy(
@@ -84,11 +131,7 @@ passport.deserializeUser((user: User, done) => {
 
 
 
-declare module "express-session" {
-    interface SessionData {
-        userId?: number;
-    }
-}
+
 
 (async () => {
     await ContactsModel.user();
@@ -117,9 +160,10 @@ router.post("/admin", async (req, res) => {
 
 
 });
+
 // Logout de usuario
 router.post("/logout", (req, res) => {
-    //req.session.destroy(() => res.json({ message: "Sesión cerrada" }));
+    req.session.destroy(() => res.json({ message: "Sesión cerrada" }));
     req.session.destroy(() => res.redirect("/login")); //hay que probar a ver que tal
 
 });
@@ -146,6 +190,14 @@ router.get("/admin", (req, res) => {
     }
 });
 
+router.get("/logout", (req, res) => {
+    req.session.destroy(() => {
+        res.redirect("/");
+    });
+});
+
+
+
 /*router.get("/admin/contacts", (req, res) => {
     if (req.isAuthenticated()) {
         res.render("contacts"); // o cualquier vista que tengas
@@ -154,7 +206,11 @@ router.get("/admin", (req, res) => {
     }
 });*/
 
+
+
+
 router.get('/admin/contacts', ContactsController.access);
+router.get('/admin/payments', ContactsController.accessPayment);
 
 
 

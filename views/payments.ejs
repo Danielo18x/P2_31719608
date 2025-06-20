@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheets/style_panel.css">
+    <link rel="icon" type="image/png" href="../images/iconito2.ico">
+    <script src="../Javascripts/barra_busqueda.js"></script>
+    <title> Reparatech Admin</title>
+</head>
+<body>
+    <%- include("template/navbar_admin")%>
+    <div class="fondo">
+        <h1> Registro de Pagos </h1>
+        <!--<input type="text" id="busqueda" placeholder="Nombre/Correo" class="busqueda" title="Buscar contacto"/>-->
+        <label class="filtros"> Filtrar por:
+            <div>
+                <input type="checkbox" id="check-servicio" onchange="mostrarServicio()"> Servicios
+                <div id="input-servicio" style="display: none; margin-top: 10px;">
+                    <select class="campos" name="servicio" id="select-servicio">
+                        <option value="Reparación de Hardware">Reparación de Hardware</option>
+                        <option value="Solución de Problemas de Software">Solución de Problemas de Software</option>
+                        <option value="Mantenimiento Preventivo">Mantenimiento Preventivo</option>
+                    </select>
+                </div>
+                <input type="checkbox" id="fecha" onchange="mostrarFecha()"> Fecha
+                <div id="input-fecha" style="display: none; margin-top: 10px;">
+                    <input type="date" class="campos" name="fecha" id="fechas">
+                </div>
+                <input type="checkbox" id="estado" onchange="mostrarEstado()"> Estado de Pago
+                <div id="input-estado" style="display: none; margin-top: 10px;">
+                    <select class="campos" name="estado" id="estados">
+                        <option value="Exitoso">Exitoso</option>
+                        <option value="Fallido">Fallido</option>
+                    </select>
+                </div>
+            </div>
+        </label>
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Servicio</th>
+                    <th>Monto</th>
+                    <th>Moneda</th>
+                    <th>Fecha</th>
+                    <th>Estado de Pago</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-pagos">
+                <% payments.forEach(payment => { %>
+                    <tr>
+                        <td>
+                            <p><%= payment.id %></p>
+                        </td>
+                        <td>
+                            <%= payment.Servicio %>
+                        </td>
+                        <td>
+                            <p><%= payment.Monto %></p>
+                        </td>
+                        <td>
+                            <p><%= payment.Moneda %></p>
+                        </td>
+                        <td>
+                            <p><%= payment.Fecha %></p>
+                        </td>
+                        <td>
+                            <p><%= payment.Estado_Pago %></p>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
