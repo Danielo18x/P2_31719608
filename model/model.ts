@@ -56,7 +56,6 @@ export class ContactsModel{
         
         const username = process.env.USER
         const password = process.env.PASSWORD
-        console.log("PASSWORD desde .env:", process.env.PASSWORD);
 
         if (!username || !password) {
             throw new Error("Las variables USER o PASSWORD no están definidas en el archivo .env");
@@ -65,7 +64,6 @@ export class ContactsModel{
         const usuarioExistente = await db.get("SELECT * FROM users WHERE username = ?", [username]);
 
         if (usuarioExistente) {
-            console.log("⚠️ El usuario ya existe, no se insertará nuevamente.");
             await db.close();
             return;
         }
