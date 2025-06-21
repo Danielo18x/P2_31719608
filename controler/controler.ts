@@ -3,8 +3,15 @@ import { ContactsModel } from "../model/model";
 import { check, checkSchema, validationResult } from 'express-validator';
 import nodemailer from "nodemailer";
 import * as dotenv from "dotenv";
-
+import session from "express-session";
+declare module "express-session" {
+    interface SessionData {
+        userId?: number;
+        ultimaAccion?: number;
+    }
+}
 export class ContactsController{
+    
 
     static async get(req: Request, res: Response){
         //para validar
@@ -220,9 +227,10 @@ export class ContactsController{
             return res.render('mensaje_pago_fallo', { title: "Pago", error: "Error procesando el pago." });
         }
     }
-
+    
     //acceder a los pagos
     static async accessPayment(req: Request, res: Response){
+       
         try {
             if (req.isAuthenticated() || req.session.userId) {
                 const payments = await ContactsModel.accesoPagos();
