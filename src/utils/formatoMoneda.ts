@@ -3,7 +3,7 @@ export function convertCurrencyIfNeeded(
     originalCurrency: 'USD' | 'VES',
     targetCurrency: 'USD' | 'VES'
     ): number {
-    const tasaUsdVes = 100; // Puedes hacer esto dinámico más adelante
+    const tasaUsdVes = 100;
 
     if (originalCurrency === targetCurrency) return amount;
 

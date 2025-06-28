@@ -84,7 +84,7 @@ passport.use(new GoogleStrategy(
 interface User {
     id: string;
     nombre: string;
-    email?: string; //no se si dejar esto
+    email?: string;
 }
 
 passport.serializeUser((user, done) => done(null, user));
@@ -92,15 +92,9 @@ passport.deserializeUser((user: User, done) => {
     done(null, user);
 });
 
-
-
-
-
-
 (async () => {
     await ContactsModel.user();
 })();
-
 
 
 // Login de usuario
@@ -133,7 +127,7 @@ router.post("/logout", (req, res) => {
 });
 
 
-// 🌐 Login con Google
+// Login con Google
 router.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
 router.get("/auth/google/callback", passport.authenticate("google", {
@@ -144,7 +138,7 @@ router.get("/auth/google/callback", passport.authenticate("google", {
 
 router.get("/admin", (req, res) => {
     if (req.isAuthenticated() || req.session.userId) {
-        res.render("panel_admin"); // o cualquier vista que tengas
+        res.render("panel_admin");
     } else {
         res.redirect("/login");
     }
@@ -159,8 +153,6 @@ router.get("/logout", (req, res) => {
 
 router.get('/admin/contacts', ContactsController.access);
 router.get('/admin/payments', ContactsController.accessPayment);
-
-
 
 router.get("/", ContactsController.adminGet);
 

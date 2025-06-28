@@ -5,21 +5,8 @@ import nodemailer from "nodemailer";
 import * as dotenv from "dotenv";
 import session from "express-session";
 
-import { formatLocalizedDate, formatLocalizedDate2 } from '../src/utils/formatoFecha' //Reciente
+import { formatLocalizedDate, formatLocalizedDate2 } from '../src/utils/formatoFecha'
 import {convertCurrencyIfNeeded, formatLocalizedCurrency } from '../src/utils/formatoMoneda';
-
-
-
-
-
-
-
-
-
-
-
-
-
 declare module "express-session" {
     interface SessionData {
         userId?: number;
@@ -106,7 +93,7 @@ export class ContactsController{
             try {
                 const mailOptions = {
                     from: process.env.EMAIL_USER,
-                    to: /*"programacion2ais@yopmail.com",*/ "daniantoml.26@gmail.com",
+                    to: "programacion2ais@yopmail.com",
                     subject: "Nueva solicitud recibida",
                     html: `
                         <h3>Detalles de la solicitud:</h3>
@@ -175,12 +162,6 @@ export class ContactsController{
     static validate = [
         //Validar datos del Formulario de pago
         check('correo').isEmail().withMessage((value, { req }) => req.__('val_correo')),
-        /*check('numTarjeta').custom(value => {
-            if (!/^\d{16}$/.test(value)) {
-                throw new Error('Numero de tarjeta no valido');
-            }
-            return true;
-        }),*/
         check('numTarjeta').custom((value, { req }) => {
             if (!/^\d{16}$/.test(value)) {
                 throw new Error(req.__('val_numTarjeta'));
@@ -274,65 +255,6 @@ export class ContactsController{
     static async accessPayment(req: Request, res: Response){
 
         try {
-            /*if (req.isAuthenticated() || req.session.userId) {
-
-
-                const rawPayments = await ContactsModel.accesoPagos();
-                const locale = res.locals.locale || 'es'; // Idioma detectado
-
-                const payments = rawPayments.map((p) => ({
-                    ...p,
-                    fechaFormateada: formatLocalizedDate(p.fecha, locale)
-                }));
-
-                res.render('payments', { payments });
-                /*const payments = await ContactsModel.accesoPagos();
-                res.render('payments', {payments});*/
-            /* } else {
-                res.redirect("/login");
-            }*/
-
-            //Esto es lo anterior
-            /*if (req.isAuthenticated() || req.session.userId) {
-                const rawPayments = await ContactsModel.accesoPagos();
-                console.log('rawPayments:', rawPayments);
-                const locale = res.locals.locale || 'es'; // Idioma detectado
-                console.log('locale:', locale)
-                console.log('Fechas crudas:', rawPayments.map(p => p.Fecha));
-
-
-
-
-                const currency = locale === 'en' ? 'USD' : 'VES';
-
-                const payments = rawPayments.map((p) => {
-                const montoCrudo = Number(p.Monto || 0);
-                const montoConvertido = convertCurrency(montoCrudo, 'USD', currency);
-                const montoFormateado = formatLocalizedCurrency(montoConvertido, locale, currency);
-
-                return {
-                ...p,
-                fechaFormateada: formatLocalizedDate(p.Fecha, locale),
-                montoFormateado
-                };
-            });*/
-
-
-
-
-                /*const payments = rawPayments.map((p) => ({
-                    ...p,
-                    fechaFormateada: formatLocalizedDate(p.Fecha, locale),
-                    montoFormateado: formatLocalizedCurrency(p.Monto, locale, currency)
-                }));*/
-
-
-            /*res.render('payments', { payments });
-            } else {
-                res.redirect('/login');
-            }*/
-
-
             if (req.isAuthenticated() || req.session.userId) {
                 const rawPayments = await ContactsModel.accesoPagos();
                 const locale = res.locals.locale || 'es-VE';
@@ -361,14 +283,6 @@ export class ContactsController{
                 } else {
                 res.redirect('/login');
                 }
-
-
-
-
-
-
-
-            
         } catch (error) {
             res.status(500).send('Error al obtener los contactos');
             console.error('Error al guardar el contacto:', error);
