@@ -6,20 +6,26 @@
     <link rel="icon" type="image/ico" href="../images/iconito.ico">
     <link rel="stylesheet" href="../stylesheets/style_inicio.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../stylesheets/styles_index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title> Reparatech login </title>
 </head>
 <body>
-    <div class="user"> 
+    <%- include("template/navbar")%>
+    <main>
+        <div class="user"> 
         <div class="cuadro">
             <div class="img_user"></div>
-            <h2> Sesión Administrador </h2>
+            <h2> <%= __('login_title') %> </h2>
             <form action="/login/admin" class="Form" method="post" id="form">
-                <input class="campo" type="text" placeholder="Usuario" title="Complete este campo" name="user" id="user" required>
-                <input class="campo" type="password" placeholder="Contraseña" title="Complete este campo" name="password" id="password" required>
-                <button class="campo2" type="submit"> Iniciar sesión </button>
-                <button class="sesion_google" onclick="window.location.href='/login/auth/google'"> <i class="fab fa-google"></i> Iniciar sesión con Google </button>
+                <input class="campi" type="text" placeholder="<%= __('login_user') %>" title="<%= __('login_puser') %>" name="user" id="user" required> 
+                <input class="campi" type="password" placeholder="<%= __('login_pass') %>" title="<%= __('login_ppass') %>" name="password" id="password" required>
+                <button class="campo2" type="submit"> <%= __('login') %> </button>
+                <button class="sesion_google" onclick="window.location.href='/login/auth/google'"> <i class="fab fa-google"></i> <%= __('login_google') %> </button>
             </form>
         </div>
-    </div>
+        </div>
+    </main>
+    <%- include("template/footer")%>
 </body>
 </html>

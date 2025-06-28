@@ -6,24 +6,25 @@
     <link rel="stylesheet" href="../stylesheets/style_panel.css">
     <link rel="icon" type="image/png" href="../images/iconito2.ico">
     <script src="../Javascripts/barra_busqueda.js"></script>
+    <link rel="stylesheet" href="../stylesheets/styles_index.css">
     <title> Reparatech Admin</title>
 </head>
 <body>
     <%- include("template/navbar_admin")%>
     <div class="fondo">
-        <h1> Registro de Contactos </h1>
-        <input type="text" id="busqueda" placeholder="Nombre/Correo" class="busqueda" title="Buscar contacto"/>
+        <h1> <%= __('reg_con') %> </h1>
+        <input type="text" id="busqueda" placeholder="<%= __('reg_pnom') %>" class="busqueda" title="Buscar contacto"/>
         <table class="tabla">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Telefono</th>
-                    <th>Mensaje</th>
+                    <th><%= __('con_nombre') %></th>
+                    <th><%= __('con_correo') %></th>
+                    <th><%= __('con_telef') %></th>
+                    <th><%= __('Mensaje') %></th>
                     <th>IP</th>
-                    <th>Fecha</th>
-                    <th>Pais</th>
+                    <th><%= __('Fecha') %></th>
+                    <th><%= __('Pais') %></th>
                 </tr>
             </thead>
             <tbody id="tabla-contactos">
@@ -58,5 +59,6 @@
             </tbody>
         </table>
     </div>
+    <%- include("template/footer")%>
 </body>
 </html>

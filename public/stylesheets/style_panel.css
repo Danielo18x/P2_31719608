@@ -147,7 +147,7 @@ button:focus{
     align-items: center;
     justify-content: flex-start;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     gap: 5px;
 }
 
@@ -162,6 +162,7 @@ h1{
     border-collapse: collapse;
     text-align: center;
     font-weight: 700;
+    margin-bottom: 50px;
 }
 
 td, th{
@@ -231,6 +232,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     .panel{
         flex-direction: column;
         align-content: center;
+    }
+
+    .contactos{
+        margin-top: 70px;
     }
 
     .linknone{

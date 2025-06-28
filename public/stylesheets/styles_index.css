@@ -556,6 +556,26 @@ footer a:hover{
     transform: translateY(-0.6rem);
 }
 
+.idioma{
+    width: 4.8cm;
+    height: auto;
+    outline: none;
+    text-align: center;
+    font-size: 15pt;
+    padding: 0.1cm;
+    border-radius: 20px;
+    font-weight: 600;
+    border: 3px solid #6BB9E7;
+    /*background-color: #e1f2ff;*/
+    background: #e1f2ff url(https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f310.svg) no-repeat right 0.8em center / 1.2em 21.12px;
+}
+
+.idioma:focus{
+    border: 3px solid #4489B7;
+}
+
+
+
 
 /*MEDIA QUERIES*/
 

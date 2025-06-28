@@ -6,23 +6,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../stylesheets/style_form_pago.css">
         <link rel="icon" type="image/png" href="../images/iconito_form_pago.png">
-        <title> Pagos Reparatech </title>
+        <link rel="stylesheet" href="../stylesheets/styles_index.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <title> <%= __('pago_title2') %> </title>
     </head>
     <body>
-        <div class="pago">
+        <%- include("template/navbar")%>
+        <main>
+            <div class="pago">
             <div class="imagen6"></div>
             <div class="Form_pago">
                 <form action="/pago/payment#" method="post" id="form">
-                    <h2 id="form_pa"> Pago con tarjeta </h2>
+                    <h2 id="form_pa"> <%= __('pago_title') %> </h2>
                     <label> Servicio
                         <select class="campo_services" name="servicio" id="servicio">
-                            <option value="Reparación de Hardware">Reparación de Hardware</option>
-                            <option value="Solución de Problemas de Software">Solución de Problemas de Software</option>
-                            <option value="Mantenimiento Preventivo">Mantenimiento Preventivo</option>
+                            <option value="Reparación de Hardware"><%= __('ser1') %></option>
+                            <option value="Solución de Problemas de Software"><%= __('ser2') %></option>
+                            <option value="Mantenimiento Preventivo"><%= __('ser3') %></option>
                         </select>
                     </label>
-                    <label> Correo electrónico
-                        <input class="campo_correo" type="email" placeholder="Correo" name="correo" id="correo" title="Correo electrónico" value="<%= datos?.correo || '' %>">
+                    <label> <%= __('pago_correo') %>
+                        <input class="campo_correo" type="email" placeholder="<%= __('p_correo') %>" name="correo" id="correo" title="<%= __('pt_correo') %>" value="<%= datos?.correo || '' %>">
                         <% if (errores) { %>
                             <% errores.forEach(error => { %>
                                 <% if (error.path === 'correo') { %>
@@ -31,8 +35,8 @@
                             <% }) %>
                         <% } %>
                     </label>
-                    <label> Informacion de la tarjeta
-                        <input class="campo_tarjeta" name="numTarjeta" type="text" placeholder="1234 1234 1234 1234"  maxlength="16" title="Numero de tarjeta" value="<%= datos?.numTarjeta || '' %>">
+                    <label> <%= __('pago_info') %>
+                        <input class="campo_tarjeta" name="numTarjeta" type="text" placeholder="1234 1234 1234 1234"  maxlength="16" title="<%= __('pt_tarjeta') %>" value="<%= datos?.numTarjeta || '' %>">
                         <% if (errores) { %>
                             <% errores.forEach(error => { %>
                                 <% if (error.path === 'numTarjeta') { %>
@@ -41,9 +45,9 @@
                             <% }) %>
                         <% } %>
                         <div class="tarjeta">
-                            <input class="campo_date" name="mesExp" type="text" placeholder="MM" maxlength="2" title="Mes de expiración" value="<%= datos?.mesExp || '' %>">
-                            <input class="campo_date" name="yearExp" type="text"  placeholder="AAAA"  maxlength="4"  title="Año de expiracion" value="<%= datos?.yearExp || '' %>">
-                            <input class="campo_date" name="cvv" type="text" placeholder="CVV/CVC"  maxlength="3"  title="Código de seguridad" value="<%= datos?.yearExp || '' %>">
+                            <input class="campo_date" name="mesExp" type="text" placeholder="MM" maxlength="2" title="<%= __('pt_mes') %>" value="<%= datos?.mesExp || '' %>">
+                            <input class="campo_date" name="yearExp" type="text"  placeholder="AAAA"  maxlength="4"  title="<%= __('pt_year') %>" value="<%= datos?.yearExp || '' %>">
+                            <input class="campo_date" name="cvv" type="text" placeholder="CVV/CVC"  maxlength="3"  title="<%= __('pt_cod') %>" value="<%= datos?.yearExp || '' %>">
                         </div>
                         <% if (errores.some(error => ['mesExp', 'yearExp', 'cvv'].includes(error.path))) { %>
                             <div class="cuadro_error">
@@ -51,8 +55,8 @@
                             </div>
                         <% } %>
                     </label>
-                    <label> Nombre del Titular de la Tarjeta
-                        <input class="campo_nombre" type="text" name="nomTarjeta"  placeholder="Nombre Completo" title="Ingrese su Nombre Completo" value="<%= datos?.nomTarjeta || '' %>">
+                    <label> <%= __('pago_nombre') %>
+                        <input class="campo_nombre" type="text" name="nomTarjeta"  placeholder="<%= __('p_nombre') %>" title="<%= __('pt_nombre') %>" value="<%= datos?.nomTarjeta || '' %>">
                         <% if (errores) { %>
                             <% errores.forEach(error => { %>
                                 <% if (error.path === 'nomTarjeta') { %>
@@ -61,12 +65,11 @@
                             <% }) %>
                         <% } %>
                     </label>
-                    <label> Monto
+                    <label> <%= __('pago_monto') %>
                         <div class="monto">
                             <input class="campo_monto" name="monto" type="text" id="monto" value="<%= datos?.monto || '' %>">
                             <select class="select_moneda" id="moneda" name="moneda" pattern="[0-9]+">
                                 <option value="USD">USD</option>
-                                <option value="EUR">EUR</option>
                                 <option value="VES">VES</option>
                             </select>
                         </div>
@@ -78,9 +81,11 @@
                             <% }) %>
                         <% } %>
                     </label>
-                    <button type="submit" class="summit"> Pagar </button>
+                    <button type="submit" class="summit"> <%= __('but_pagar') %> </button>
                 </form>
             </div>
         </div>
+    </main>
+    <%- include("template/footer")%>
     </body>
 </html>

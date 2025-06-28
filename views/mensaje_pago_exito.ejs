@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="../stylesheets/style_mensaje_exito_fallo.css">
     <link rel="stylesheet" href="../stylesheets/styles_index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <title> Pago Exitoso </title>
+    <title> <%= __('pago_title_exito') %> </title>
 </head>
 <body>
     <%- include("template/navbar")%>
     <main>
-        <div class="exito_pago"></div>
+        <div class="<%= __('img_pago_exito') %>"></div>
     </main>
     <%- include("template/footer")%>
 </body>

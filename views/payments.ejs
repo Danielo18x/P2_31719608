@@ -5,32 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../stylesheets/style_panel.css">
     <link rel="icon" type="image/png" href="../images/iconito2.ico">
+    <link rel="stylesheet" href="../stylesheets/styles_index.css">
     <script src="../Javascripts/barra_busqueda.js"></script>
     <title> Reparatech Admin</title>
 </head>
 <body>
     <%- include("template/navbar_admin")%>
     <div class="fondo">
-        <h1> Registro de Pagos </h1>
-        <label class="filtros"> Filtrar por:
+        <h1> <%= __('reg_pag') %> </h1>
+        <label class="filtros"> <%= __('filtro') %> 
             <div>
-                <input type="checkbox" id="check-servicio" onchange="mostrarServicio()"> Servicios
+                <input type="checkbox" id="check-servicio" onchange="mostrarServicio()"> <%= __('servicios') %> 
                 <div id="input-servicio" style="display: none; margin-top: 10px;">
                     <select class="campos" name="servicio" id="select-servicio">
-                        <option value="Reparación de Hardware">Reparación de Hardware</option>
-                        <option value="Solución de Problemas de Software">Solución de Problemas de Software</option>
-                        <option value="Mantenimiento Preventivo">Mantenimiento Preventivo</option>
+                        <option value="<%= __('ser1') %>"><%= __('ser1') %> </option>
+                        <option value="<%= __('ser2') %>"><%= __('ser2') %> </option>
+                        <option value="<%= __('ser3') %>"><%= __('ser3') %> </option>
                     </select>
                 </div>
-                <input type="checkbox" id="fecha" onchange="mostrarFecha()"> Fecha
+                <input type="checkbox" id="fecha" onchange="mostrarFecha()"> <%= __('Fecha') %> 
                 <div id="input-fecha" style="display: none; margin-top: 10px;">
                     <input type="date" class="campos" name="fecha" id="fechas">
                 </div>
-                <input type="checkbox" id="estado" onchange="mostrarEstado()"> Estado de Pago
+                <input type="checkbox" id="estado" onchange="mostrarEstado()"> <%= __('estado') %> 
                 <div id="input-estado" style="display: none; margin-top: 10px;">
                     <select class="campos" name="estado" id="estados">
-                        <option value="Exitoso">Exitoso</option>
-                        <option value="Fallido">Fallido</option>
+                        <option value="<%= __('e1') %>"><%= __('e1') %> </option>
+                        <option value="<%= __('e2') %>"><%= __('e2') %> </option>
                     </select>
                 </div>
             </div>
@@ -39,11 +40,11 @@
             <thead>
                 <tr>
                     <th>N°</th>
-                    <th>Servicio</th>
-                    <th>Monto</th>
-                    <th>Moneda</th>
-                    <th>Fecha</th>
-                    <th>Estado de Pago</th>
+                    <th><%= __('servicios') %></th>
+                    <th><%= __('monto') %></th>
+                    <th><%= __('moneda') %></th>
+                    <th><%= __('Fecha') %></th>
+                    <th><%= __('estado') %> </th>
                 </tr>
             </thead>
             <tbody id="tabla-pagos">
@@ -53,7 +54,15 @@
                             <p><%= payment.id %></p>
                         </td>
                         <td>
-                            <%= payment.Servicio %>
+                            <% if (payment.Servicio === 'Reparación de Hardware') { %>
+                                <%= __('ser1') %>
+                            <% } else if (payment.Servicio === 'Solución de Problemas de Software') { %>
+                                <%= __('ser2') %>
+                            <% } else if (payment.Servicio === 'Mantenimiento Preventivo') { %>
+                                <%= __('ser3') %>
+                            <% } else { %>
+                                <%= payment.Servicio %> 
+                            <% } %>
                         </td>
                         <td>
                             <p><%= payment.Monto %></p>
@@ -65,12 +74,21 @@
                             <p><%= payment.Fecha %></p>
                         </td>
                         <td>
-                            <p><%= payment.Estado_Pago %></p>
+                            <p>
+                                <% if (payment.Estado_Pago === 'Exitoso') { %>
+                                    <%= __('e1') %>
+                                <% } else if (payment.Estado_Pago === 'Fallido') { %>
+                                    <%= __('e2') %>
+                                <% } else  { %>
+                                    <%= payment.Estado_Pago %> 
+                                <% } %>
+                            </p>
                         </td>
                     </tr>
                 <% }); %>
             </tbody>
         </table>
     </div>
+    <%- include("template/footer")%>
 </body>
 </html>

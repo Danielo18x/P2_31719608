@@ -24,11 +24,13 @@ export class ContactsController{
     }
 
     static validateData = [
-        check('nombre').matches(/^[a-zA-ZÀ-ÿ\s]{1,40}$/).withMessage('El nombre es obligatorio'),
-        check('correo').isEmail().withMessage('Debe ser un correo valido'),
-        check('telefono').matches(/^0?4(12|24|14|16|26)-?\d{7}$/).withMessage('El numero de telefono no es valido'),
-        check('comentario').notEmpty().withMessage('El mensaje no puede estar vacío')
+        check('nombre').matches(/^[a-zA-ZÀ-ÿ\s]{1,40}$/).withMessage((value, { req }) => req.__('val_nombre')),
+        check('correo').isEmail().withMessage((value, { req }) => req.__('val_correo')),
+        check('telefono').matches(/^0?4(12|24|14|16|26)-?\d{7}$/).withMessage((value, { req }) => req.__('val_telefono')),
+        check('comentario').notEmpty().withMessage((value, { req }) => req.__('val_comentario'))
     ];
+
+
 
     static async add(req: Request, res: Response): Promise<void> {
         try {
@@ -43,7 +45,7 @@ export class ContactsController{
 
             if (!captchaVerified.success) {
                 return res.status(400).render('index', {
-                    errores: [{ msg: 'Captcha no verificado' }],
+                    errores: [{ msg: req.__('val_captcha') }],
                     datos: req.body
                 });
             }
@@ -88,7 +90,7 @@ export class ContactsController{
             try {
                 const mailOptions = {
                     from: process.env.EMAIL_USER,
-                    to: "programacion2ais@yopmail.com",
+                    to: /*"programacion2ais@yopmail.com",*/ "daniantoml.26@gmail.com",
                     subject: "Nueva solicitud recibida",
                     html: `
                         <h3>Detalles de la solicitud:</h3>
@@ -139,13 +141,20 @@ export class ContactsController{
 
     static validate = [
         //Validar datos del Formulario de pago
-        check('correo').isEmail().withMessage('Debe ser un correo valido'),
-        check('numTarjeta').custom(value => {
+        check('correo').isEmail().withMessage((value, { req }) => req.__('val_correo')),
+        /*check('numTarjeta').custom(value => {
             if (!/^\d{16}$/.test(value)) {
                 throw new Error('Numero de tarjeta no valido');
             }
             return true;
+        }),*/
+        check('numTarjeta').custom((value, { req }) => {
+            if (!/^\d{16}$/.test(value)) {
+                throw new Error(req.__('val_numTarjeta'));
+            }
+            return true;
         }),
+
         check(['mesExp', 'yearExp', 'cvv']).custom((value, { req, path }) => {
             const reglas = {
                 mesExp: /^\d{2}$/,
@@ -154,14 +163,14 @@ export class ContactsController{
             }
 
             if (!reglas[path as keyof typeof reglas].test(value)) {
-                throw new Error('Formato inválido')
+                throw new Error(req.__('val_datos'))
             }
             return true;
         }),
 
 
-        check('nomTarjeta').matches(/^[a-zA-ZÀ-ÿ\s]{1,40}$/).withMessage('El nombre es obligatorio'),
-        check('monto').isFloat({ min: 1 }).withMessage('Monto invalido')
+        check('nomTarjeta').matches(/^[a-zA-ZÀ-ÿ\s]{1,40}$/).withMessage((value, { req }) => req.__('val_pnombre')),
+        check('monto').isFloat({ min: 1 }).withMessage((value, { req }) => req.__('val_monto')),
     ];
     
 
@@ -230,7 +239,7 @@ export class ContactsController{
     
     //acceder a los pagos
     static async accessPayment(req: Request, res: Response){
-       
+
         try {
             if (req.isAuthenticated() || req.session.userId) {
                 const payments = await ContactsModel.accesoPagos();

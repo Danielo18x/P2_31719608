@@ -5,5 +5,12 @@
         <a href="https://www.whatsapp.com" target="_blank"><img loading="lazy" src="../images/whatsapp-icon.png" alt="WhatsApp"></a>
         <a href="https://www.facebook.com" target="_blank"><img loading="lazy" src="../images/facebook-icon.png" alt="Facebook"></a>
     </div>
-    <p>©2025 | Todos los derechos reservados </p>
+    <p> <%= __('derechos') %> </p>
+    <form method="get" action="">
+        <select name="lang" onchange="this.form.submit()" class="idioma">
+            <option value="es" <%= locale === 'es' ? 'selected' : '' %>>🇻🇪 <%= __('es') %></option>
+            <option value="en" <%= locale === 'en' ? 'selected' : '' %>>🇺🇸 <%= __('en') %></option>
+            
+        </select>
+    </form>
 </footer>

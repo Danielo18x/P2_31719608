@@ -26,11 +26,11 @@
         </div>
         <nav class="barra-navegacion">
             <ul class="links-nav">
-                <li class="linknone"> <a href="#home"> Home </a> </li>
-                <li class="linknone"> <a href="#acercade"> Acerca De </a> </li>
-                <li class="linknone"> <a href="#servicios"> Servicios </a> </li>
-                <li class="linknone"> <a href="#testimonios"> Testimonios </a> </li>
-                <li class="linknone"> <a href="#contacto"> Contacto </a> </li>
+                <li class="linknone"> <a href="#home"> <%= __('home') %> </a> </li>
+                <li class="linknone"> <a href="#acercade"> <%= __('acercade') %> </a> </li>
+                <li class="linknone"> <a href="#servicios"> <%= __('servicios') %> </a> </li>
+                <li class="linknone"> <a href="#testimonios"> <%= __('testimonios') %> </a> </li>
+                <li class="linknone"> <a href="#contacto"> <%= __('contacto') %> </a> </li>
                 <li> <a href="/login"> <i class="material-icons">vpn_key</i> </a></li>
             </ul>
         </nav>
@@ -40,16 +40,18 @@
             <div class="imagen1"></div>
             <div class="cuadrotext1">
                 <h1 id="home"> REPARATECH </h1>
-                <p> Soluciones rápidas y efectivas para tu computadora </p>
-                <a href="#contacto"> <button> CONTACTANOS </button> </a> 
+                <!--<p> Soluciones rápidas y efectivas para tu computadora </p>-->
+                <p> <%= __('mensaje') %> </p>
+
+                <a href="#contacto"> <button> <%= __('but_contacto') %> </button> </a> 
             </div>
         </section>
         <section class="seccion2-acercade" id="acercade">
             <div class="cuadrotext2">
-                <h2> ACERCA DE </h2>
-                <p> En Reparatech contamos con un equipo de expertos comprometidos con el funcionamiento óptimo de tu computadora. </p> 
-                <p> Con años de experiencia en tecnología, nuestro objetivo es ofrecer soluciones eficientes para que sigas conectado sin interrupciones.</p>
-                <p> Nuestro compromiso es tu satisfacción. </p>
+                <h2> <%= __('s2_title') %> </h2>
+                <p> <%= __('s2_p1') %> </p> 
+                <p> <%= __('s2_p2') %></p>
+                <p> <%= __('s2_p3') %> </p>
             </div>
             <div class="imagen2">
                 <img loading="lazy" src="./images/imagen2.jpg" alt="Empleado reparando una laptop">
@@ -59,47 +61,47 @@
             <div class="imagen3"></div>
             <div class="cuadrotext3">
                 <div>
-                    <h2>  ¿Por qué elegirnos? </h2>
-                    <p> Sabemos que tu computadora es esencial en tu día a día, por eso ofrecemos: </p>
+                    <h2>  <%= __('s3_title') %> </h2>
+                    <p> <%= __('s3_p1') %> </p>
                     <ol>
-                        <li>Atención rápida y personalizada.</li>
-                        <li>Precios accesibles sin costos ocultos.</li>
-                        <li>Garantía en todas nuestras reparaciones.</li>
-                        <li>Soporte técnico confiable.</li>
-                        <li>Disponibilidad de repuestos originales.</li>
+                        <li><%= __('s3_l1') %></li>
+                        <li><%= __('s3_l2') %></li>
+                        <li><%= __('s3_l3') %></li>
+                        <li><%= __('s3_l4') %></li>
+                        <li><%= __('s3_l5') %></li>
                     </ol>
                 </div>
             </div>
         </section>
         <section class="seccion4-servicios" id="servicios">
-            <h2> SERVICIOS </h2>
-            <a href="/pago/servicio"> <button class="button_service"> Pagar Servicio </button> </a>
+            <h2> <%= __('s4_title') %> </h2>
+            <a href="/pago/servicio"> <button class="button_service"> <%= __('but_pagservicio') %> </button> </a>
             <div class="servicios">
                 <aside id="bloque1" class="tarjetas">
                     <img loading="lazy"  src="./images/servicio1.jpg" alt="Chico reparando pantalla">
-                    <h3> Reparación de Hardware </h3>
-                    <p> Reemplazo de piezas como pantallas, teclados y baterías, además de solucionar problemas en placas base y componentes, y mejorar el rendimiento con actualizaciones como discos SSD y memoria RAM.</p>
+                    <h3> <%= __('s4_st1') %> </h3>
+                    <p> <%= __('s4_p1') %> </p>
                 </aside>
                 <aside id="bloque2" class="tarjetas"> 
                     <img loading="lazy" src="./images/servicio2.jpg" alt="Chico usando pc">
-                    <h3> Solución de Problemas de Software </h3>
-                    <p>  Ofrecemos soluciones de software que incluyen la eliminación de virus y malware para proteger tu equipo, la instalación y actualización de programas para mantener su estabilidad, y la recuperación de datos perdidos con herramientas avanzadas. </p>
+                    <h3> <%= __('s4_st2') %> </h3>
+                    <p>  <%= __('s4_p2') %> </p>
                 </aside>
                 <aside id="bloque3" class="tarjetas"> 
                     <img loading="lazy" src="./images/servicio3.jpg" alt="Chico limpiando ua pc">
-                    <h3> Mantenimiento Preventivo </h3>
-                    <p>  Realizamos limpieza interna y externa para evitar sobrecalentamientos y mejorar la eficiencia del equipo. Optimizamos el sistema para maximizar la velocidad y garantizar un rendimiento fluido. Configuramos soluciones de seguridad y respaldo para proteger tus datos. </p>
+                    <h3> <%= __('s4_st3') %> </h3>
+                    <p> <%= __('s4_p3') %>  </p>
                 </aside>
             </div>
         </section>
         <section class="seccion5-testimonios" id="testimonios">
             <div class="cuadrotext5">
                 <div>
-                    <h2> TESTIMONIOS </h2>
-                    <P> "Mi laptop tenía problemas de rendimiento, pero después del mantenimiento, funciona como nueva. ¡Increíble servicio!"</p>
+                    <h2> <%= __('s5_title') %> </h2>
+                    <P> <%= __('s5_p1') %>   </p>
                     <p class="estrellas"> &#9733 &#9733 &#9733 &#9733 &#9733</p>
                     <p class="nom_testigos"> Carlos G  </p>
-                    <p>"Gracias por la rápida respuesta y solución a mi problema. Excelente atención y precios accesibles."</P>
+                    <p> <%= __('s5_p2') %>  </P>
                     <p class="estrellas"> &#9733 &#9733 &#9733 &#9733 &#9733</p>
                     <p class="nom_testigos">  Ana M </p>
                 </div>
@@ -107,11 +109,11 @@
             <div class="imagen5"></div>
         </section>
         <section class="seccion6-contacto" id="contacto">
-            <h2> Contactanos </h2>
+            <h2> <%= __('s6_title') %> </h2>
             <div class="contacto">
                 <div class="Formulario">
                     <form action="/contact#contacto" method="post" id="form">
-                        <input class="campo" type="text" placeholder="Nombre" name="nombre" id="nombre" >
+                        <input class="campo" type="text" placeholder="<%= __('s6_nombre') %>" name="nombre" id="nombre" >
                         <% if (errores) { %>
                             <% errores.forEach(error => { %>
                                 <% if (error.path === 'nombre') { %>
@@ -119,7 +121,7 @@
                                 <% } %>
                             <% }) %>
                         <% } %>
-                        <input class="campo" type="email" placeholder="Correo" name="correo" id="correo" value="<%= datos?.correo || '' %>">
+                        <input class="campo" type="email" placeholder="<%= __('s6_correo') %>" name="correo" id="correo" value="<%= datos?.correo || '' %>">
                         <% if (errores) { %>
                             <% errores.forEach(error => { %>
                                 <% if (error.path === 'correo') { %>
@@ -127,7 +129,7 @@
                                 <% } %>
                             <% }) %>
                         <% } %>
-                        <input class="campo" type="tel" placeholder="Teléfono" name="telefono" id="telefono" value="<%= datos?.telefono || '' %>">
+                        <input class="campo" type="tel" placeholder="<%= __('s6_telefono') %>" name="telefono" id="telefono" value="<%= datos?.telefono || '' %>">
                         <% if (errores) { %>
                             <% errores.forEach(error => { %>
                                 <% if (error.path === 'telefono') { %>
@@ -135,7 +137,7 @@
                                 <% } %>
                             <% }) %>
                         <% } %>
-                        <textarea class="mensaje" placeholder="Mensaje" name="comentario" id="comentario" value="<%= datos?.comentario || '' %>"></textarea>
+                        <textarea class="mensaje" placeholder="<%= __('s6_mensaje') %>" name="comentario" id="comentario" value="<%= datos?.comentario || '' %>"></textarea>
                         <% if (errores) { %>
                             <% errores.forEach(error => { %>
                                 <% if (error.path === 'comentario') { %>
@@ -143,11 +145,11 @@
                                 <% } %>
                             <% }) %>
                         <% } %>
-                        <label class="recaptcha"> Marca la Casilla
+                        <label class="recaptcha"> <%= __('recaptcha') %>
                             <div class="g-recaptcha" data-sitekey="6LcMPEcrAAAAAMdmnGNBj2bey59YlazEimuxn8tG"></div>
                             <% if (errores) { %>
                                 <% errores.forEach(error => { %>
-                                    <% if (error.msg === 'Captcha no verificado') { %>
+                                    <% if (error.msg && error.msg.includes('Captcha')) { %>
                                         <div class="cuadro_error">
                                             <p class="error_mensaje"><%= error.msg %></p>
                                         </div>
@@ -155,21 +157,21 @@
                                 <% }) %>
                             <% } %>
                         </label>
-                        <button type="submit" class="summit"> Enviar </button>
+                        <button type="submit" class="summit"> <%= __('but_enviar') %> </button>
                     </form>
                 </div>
                 <div class="Informacion">
                     <div class="direccion">
-                        <p>Av. Bolívar, esquina con Calle Comercio Villa de Cura, Estado Aragua, Venezuela</p>
+                        <p> <%= __('s6_dirc') %></p>
                     </div>
                     <div class="links">
-                        <p> <strong> 📧Email: </strong> <a class="correo" href="mailto:soporte@reparatech.com"> soporte@reparatech.com </a> </p>
+                        <p> <strong> 📧<%= __('s6_correo') %>: </strong> <a class="correo" href="mailto:soporte@reparatech.com"> soporte@reparatech.com </a> </p>
                     </div>
                     <div class="links">
-                        <strong> 📞Teléfono:</strong> <a class="telefono" href="tel: +58 412-530-9218">+58 426-530-9218</a>
+                        <strong> 📞<%= __('s6_telefono') %>:</strong> <a class="telefono" href="tel: +58 412-530-9218">+58 426-530-9218</a>
                     </div>
                     <div class="links">
-                        <p class="horario"><strong> ⏰Horario: </strong> Lunes - Viernes 8:30 - 19:00</p>
+                        <p class="horario"><strong> ⏰<%= __('s6_horario') %>: </strong> <%= __('s6_horariodi') %></p>
                     </div>
                 </div>
             </div>
@@ -182,7 +184,20 @@
             <a href="https://www.whatsapp.com" target="_blank"><img loading="lazy" src="./images/whatsapp-icon.png" alt="WhatsApp"></a>
             <a href="https://www.facebook.com" target="_blank"><img loading="lazy" src="./images/facebook-icon.png" alt="Facebook"></a>
         </div>
-        <p>©2025 | Todos los derechos reservados </p>
+        <p> <%= __('derechos') %> </p>
+        <form method="get" action="">
+            <select name="lang" onchange="this.form.submit()" class="idioma">
+                <option value="es" <%= locale === 'es' ? 'selected' : '' %>>🇻🇪 <%= __('es') %></option>
+                <option value="en" <%= locale === 'en' ? 'selected' : '' %>>🇺🇸 <%= __('en') %></option>
+                
+            </select>
+        </form>
+
+
+
+
+
+
     </footer>
 </body>
 </html>

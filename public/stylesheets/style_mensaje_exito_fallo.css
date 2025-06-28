@@ -8,7 +8,7 @@ main {
     height: 100vh;
 }
 
-.exito_contacto, .exito_pago, .fallo_pago{
+.exito_contacto, .exito_pago, .fallo_pago, .success_contact, .payment_success,  .payment_failure{
     width: 350px;
     height: 350px;
     background-size: cover;
@@ -28,4 +28,19 @@ main {
 
 .fallo_pago{
     background-image: url(../images/Mensaje3.jpg);
+}
+
+.success_contact{
+    background-image: url(../images/Mensaje1_en.jpg) ;
+}
+
+.payment_success{
+    background-image: url(../images/Mensaje2_en.jpg);
+    background-size: cover;
+}
+
+.payment_failure{
+    background-image: url(../images/Mensaje3_en.jpg);
+    background-size: cover;
+
 }

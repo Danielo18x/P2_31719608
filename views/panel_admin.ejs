@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=s, initial-scale=1.0">
     <link rel="stylesheet" href="../stylesheets/style_panel.css">
     <link rel="icon" type="image/ico" href="../images/iconito.ico">
+    <link rel="stylesheet" href="../stylesheets/styles_index.css">
     <title> Reparatech Admin </title>
 </head>
 <body>
@@ -12,12 +13,13 @@
     <div class="panel">
         <div class="contactos">
             <div class="f_contacto"></div>
-            <a href="/login/admin/contacts"><button> Contactos </button></a>
+            <a href="/login/admin/contacts"><button> <%= __('admin_contactos') %> </button></a>
         </div>
         <div class="pagos">
             <div class="f_pago"></div>
-            <a href="/login/admin/payments"><button> Pagos </button></a>
+            <a href="/login/admin/payments"><button> <%= __('admin_pagos') %> </button></a>
         </div>
     </div>
+    <%- include("template/footer")%>
 </body>
 </html>
