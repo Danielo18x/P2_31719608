@@ -107,9 +107,9 @@
     "monto": "Amount",
     "moneda": "Currency",
     "e1": "Successful",
-    "e2": "Failed"
+    "e2": "Failed",
 
-
+    "currency": "USD"
 
 
 }

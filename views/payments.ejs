@@ -65,15 +65,16 @@
                             <% } %>
                         </td>
                         <td>
-                            <p><%= payment.Monto %></p>
+                            <p><%= payment.montoFormateado %></p>
                         </td>
                         <td>
-                            <p><%= payment.Moneda %></p>
+                            <p> <%= __('currency') %> </p>
                         </td>
                         <td>
-                            <p><%= payment.Fecha %></p>
+                            <!--<p><%= payment.Fecha %></p>-->
+                            <p> <%= payment.fechaFormateada %> </p>
                         </td>
-                        <td>
+                        <td> 
                             <p>
                                 <% if (payment.Estado_Pago === 'Exitoso') { %>
                                     <%= __('e1') %>

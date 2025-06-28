@@ -23,7 +23,6 @@ router.use(session({
         sameSite: 'lax',
         secure: process.env.NODE_ENV === 'production',
         //secure: false,
-        //secure: true,
         maxAge: 15 * 60 * 1000
     }
 }));

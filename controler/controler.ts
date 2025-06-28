@@ -4,6 +4,22 @@ import { check, checkSchema, validationResult } from 'express-validator';
 import nodemailer from "nodemailer";
 import * as dotenv from "dotenv";
 import session from "express-session";
+
+import { formatLocalizedDate, formatLocalizedDate2 } from '../src/utils/formatoFecha' //Reciente
+import {convertCurrencyIfNeeded, formatLocalizedCurrency } from '../src/utils/formatoMoneda';
+
+
+
+
+
+
+
+
+
+
+
+
+
 declare module "express-session" {
     interface SessionData {
         userId?: number;
@@ -117,8 +133,25 @@ export class ContactsController{
     static async access(req: Request, res: Response){
         try {
             if (req.isAuthenticated() || req.session.userId) {
-                const contacts = await ContactsModel.accesoContacto();
-                res.render('contacts', {contacts});
+                /*const contacts = await ContactsModel.accesoContacto();
+                res.render('contacts', {contacts});*/
+
+                const rawContacts = await ContactsModel.accesoContacto();
+                console.log('rawContacts:', rawContacts);
+                const locale = res.locals.locale || 'es'; // Idioma detectado
+                console.log('locale:', locale)
+                console.log('Fechas crudas:', rawContacts.map(c => c.Fecha_Hora));
+                const contacts = rawContacts.map((c) => ({
+                    ...c,
+                    fechaFormateada: formatLocalizedDate2(c.Fecha_Hora, locale)
+                }));
+
+
+                res.render('contacts', { contacts });
+
+
+
+
             } else {
                 res.redirect("/login");
             }
@@ -241,12 +274,100 @@ export class ContactsController{
     static async accessPayment(req: Request, res: Response){
 
         try {
-            if (req.isAuthenticated() || req.session.userId) {
-                const payments = await ContactsModel.accesoPagos();
-                res.render('payments', {payments});
-            } else {
+            /*if (req.isAuthenticated() || req.session.userId) {
+
+
+                const rawPayments = await ContactsModel.accesoPagos();
+                const locale = res.locals.locale || 'es'; // Idioma detectado
+
+                const payments = rawPayments.map((p) => ({
+                    ...p,
+                    fechaFormateada: formatLocalizedDate(p.fecha, locale)
+                }));
+
+                res.render('payments', { payments });
+                /*const payments = await ContactsModel.accesoPagos();
+                res.render('payments', {payments});*/
+            /* } else {
                 res.redirect("/login");
-            }
+            }*/
+
+            //Esto es lo anterior
+            /*if (req.isAuthenticated() || req.session.userId) {
+                const rawPayments = await ContactsModel.accesoPagos();
+                console.log('rawPayments:', rawPayments);
+                const locale = res.locals.locale || 'es'; // Idioma detectado
+                console.log('locale:', locale)
+                console.log('Fechas crudas:', rawPayments.map(p => p.Fecha));
+
+
+
+
+                const currency = locale === 'en' ? 'USD' : 'VES';
+
+                const payments = rawPayments.map((p) => {
+                const montoCrudo = Number(p.Monto || 0);
+                const montoConvertido = convertCurrency(montoCrudo, 'USD', currency);
+                const montoFormateado = formatLocalizedCurrency(montoConvertido, locale, currency);
+
+                return {
+                ...p,
+                fechaFormateada: formatLocalizedDate(p.Fecha, locale),
+                montoFormateado
+                };
+            });*/
+
+
+
+
+                /*const payments = rawPayments.map((p) => ({
+                    ...p,
+                    fechaFormateada: formatLocalizedDate(p.Fecha, locale),
+                    montoFormateado: formatLocalizedCurrency(p.Monto, locale, currency)
+                }));*/
+
+
+            /*res.render('payments', { payments });
+            } else {
+                res.redirect('/login');
+            }*/
+
+
+            if (req.isAuthenticated() || req.session.userId) {
+                const rawPayments = await ContactsModel.accesoPagos();
+                const locale = res.locals.locale || 'es-VE';
+                // Decidir moneda según idioma
+                const mostrarEnUSD = locale.startsWith('en');
+                const monedaUsuario = mostrarEnUSD ? 'USD' : 'VES';
+
+                const payments = rawPayments.map((p) => {
+                    const montoOriginal = Number(p.Monto);
+                    const monedaOriginal = p.Moneda; // 'USD' o 'VES'
+
+                    const montoConvertido = convertCurrencyIfNeeded(
+                    montoOriginal,
+                    monedaOriginal,
+                    monedaUsuario
+                    );
+
+                    return {
+                    ...p,
+                    fechaFormateada: formatLocalizedDate(p.Fecha, locale),
+                    montoFormateado: formatLocalizedCurrency(montoConvertido,locale)
+                    };
+                });
+
+                res.render('payments', { payments });
+                } else {
+                res.redirect('/login');
+                }
+
+
+
+
+
+
+
             
         } catch (error) {
             res.status(500).send('Error al obtener los contactos');

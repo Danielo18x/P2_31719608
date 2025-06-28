@@ -106,8 +106,8 @@
     "monto": "Monto",
     "moneda": "Moneda",
     "e1": "Exitoso",
-    "e2": "Fallido"
-
+    "e2": "Fallido",
+    "currency": "VES"
 
     
 }
